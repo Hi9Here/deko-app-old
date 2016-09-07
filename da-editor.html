@@ -95,9 +95,11 @@
         }
       },
       create() {
-        this._setOpened(true);
-        this.deck = { title: '', body: '' };
-        this.transitionInFrom(this.getBoundingClientRect());
+        this._setOpened(true)
+        var players = {}
+        players[this.uid] = true
+        this.deck = { title: '', body: '', players: players }
+        this.transitionInFrom(this.getBoundingClientRect())
       },
       save() {
         this.close('save');
