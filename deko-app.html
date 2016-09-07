@@ -23,7 +23,7 @@
     <firebase-query
         id="query"
         app-name="decks"
-        path="/decks/[[user.uid]]"
+        path="/decks/"
         data="{{data}}">
     </firebase-query>
     <app-indexeddb-mirror
@@ -52,16 +52,16 @@
           Polymer.DekoAppBehavior
         ],
         get isEditable() {
-          return this.online;
+          return this.online
         },
         get decksPath() {
-          return `/decks/${this.user.uid}`;
+          return '/decks/'
         },
         toEditableId(deckId) {
-          return `${this.decksPath}/${deckId}`;
+          return `${this.decksPath}/${deckId}`
         },
         signIn() {
-          this.$.auth.signInWithPopup();
+          this.$.auth.signInWithPopup()
         }
       });
     })();
