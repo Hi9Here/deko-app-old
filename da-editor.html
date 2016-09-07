@@ -63,7 +63,7 @@
       }
     </style>
     <div id="background"></div>
-    <da-deck id="note" title="{{note.title}}" body="{{note.body}}" editable></da-deck>
+    <da-deck id="deck" title="{{deck.title}}" body="{{deck.body}}" editable></da-deck>
     <div class="controls">
       <paper-button on-tap="delete">Delete</paper-button>
       <paper-button on-tap="save">Done</paper-button>
@@ -73,7 +73,7 @@
     Polymer({
       is: 'da-editor',
       properties: {
-        note: {
+        deck: {
           type: Object,
           notify: true
         },
@@ -84,19 +84,19 @@
           value: false
         },
       },
-      open(noteElement) {
+      open(deckElement) {
         this._setOpened(true);
-        this.__editedNoteElement = noteElement;
-        if (noteElement) {
-          noteElement.style.opacity = 0;
-          this.transitionInFrom(noteElement.getBoundingClientRect());
+        this.__editedDeckElement = deckElement;
+        if (deckElement) {
+          deckElement.style.opacity = 0;
+          this.transitionInFrom(deckElement.getBoundingClientRect());
         } else {
           this.create();
         }
       },
       create() {
         this._setOpened(true);
-        this.note = { title: '', body: '' };
+        this.deck = { title: '', body: '' };
         this.transitionInFrom(this.getBoundingClientRect());
       },
       save() {
@@ -106,9 +106,9 @@
         this.close('delete');
       },
       close(detail) {
-        if (this.__editedNoteElement) {
-          this.__editedNoteElement.style.opacity = 1;
-          this.__editedNoteElement = null;
+        if (this.__editedDeckElement) {
+          this.__editedDeckElement.style.opacity = 1;
+          this.__editedDeckElement = null;
         }
         this.fire('close', detail, { bubbles: false });
         this.transitionOut().then(() => {
@@ -122,7 +122,7 @@
             targetRect.width / 2 - 240 : 10;
         var targetWidth = targetRect.width > 500 ?
             '480px' : 'calc(100vw - 20px)'
-        var noteAnimation = this.$.note.animate([{
+        var deckAnimation = this.$.deck.animate([{
           transform: `translate(${rect.left}px,${rect.top - 46}px)`,
           width: `${rect.width}px`,
           easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
@@ -136,7 +136,7 @@
         }, {
           transform: `scale(${targetRect.width / 256 * 4})`
         }], 800);
-        noteAnimation.addEventListener('finish', () => {
+        deckAnimation.addEventListener('finish', () => {
           Polymer.dom(this).classList.add('open');
         });
       },
@@ -147,7 +147,7 @@
         }, {
           opacity: 0
         }], 300);
-        this.$.note.animate([{
+        this.$.deck.animate([{
           transform: 'translateY(0) scale(1)',
           opacity: 1,
           easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
