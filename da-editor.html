@@ -34,13 +34,13 @@
         background-color: var(--paper-purple-500);
         transform-origin: 128px 128px;
       }
-      na-note {
+      da-deck {
         display: block;
         position: absolute;
         top: 0px;
         left: 0px;
       }
-      :host(.open) na-note {
+      :host(.open) da-deck {
         position: relative;
         margin: auto;
         width: calc(100vw - 20px);
@@ -63,7 +63,7 @@
       }
     </style>
     <div id="background"></div>
-    <na-note id="note" title="{{note.title}}" body="{{note.body}}" editable></na-note>
+    <da-deck id="note" title="{{note.title}}" body="{{note.body}}" editable></da-deck>
     <div class="controls">
       <paper-button on-tap="delete">Delete</paper-button>
       <paper-button on-tap="save">Done</paper-button>
