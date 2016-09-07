@@ -23,7 +23,7 @@
     <firebase-query
         id="query"
         app-name="decks"
-        path$="/decks/{{user.id}}"
+        path$="/decks/{{user.uid}}"
         data="{{data}}">
     </firebase-query>
     <app-indexeddb-mirror
@@ -55,7 +55,7 @@
           return this.online
         },
         get decksPath() {
-          return '/decks/' + this.user.Id
+          return '/decks/' + this.user.uid
         },
         toEditableId(deckId) {
           return `${this.decksPath}/${deckId}`
