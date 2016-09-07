@@ -1,0 +1,98 @@
+<link rel="import" href="/bower_components/app-storage/app-network-status-behavior.html">
+<script>
+  (() => {
+    'use strict';
+
+    Polymer.DekoAppBehaviorImpl = {
+      properties: {
+        editableDeckId: {
+          type: String,
+          notify: true
+        }
+      },
+
+      get decksPath() {
+        return '';
+      },
+
+      get isEditable() {
+        return true;
+      },
+
+      toEditableId(DeckId) {
+        return DeckId;
+      },
+
+      edit(event) {
+        if (this.isEditable) {
+          let deckElement = Polymer.dom(event).localTarget;
+          this.editableDeckId = this.toEditableId(deckElement.id);
+
+          this.$.document.transactionsComplete.then(() => {
+            this.$.editor.open(deckElement);
+          });
+        }
+      },
+
+      create() {
+        if (this.isEditable) {
+          this.editableDeckId = null;
+          this.$.editor.open();
+        }
+      },
+
+      commitChange(event) {
+        var changeCommits;
+
+        switch (event.detail) {
+          case 'save':
+            changeCommits = this.save();
+            break;
+          case 'delete':
+            changeCommits = this.delete();
+            break;
+          default:
+            changeCommits = Promise.resolve();
+            break;
+        }
+
+        if (this.$.query && this.$.query.refresh) {
+          changeCommits.then(() => {
+            this.$.query.refresh();
+          });
+        }
+      },
+
+      save() {
+        if (this.$.document.isNew &&
+            (this.editableDeck.title ||
+             this.editableDeck.body)) {
+          return this.$.document.save(this.decksPath).then(() => {
+            this.$.document.reset();
+          });
+        }
+
+        return Promise.resolve();
+      },
+
+      delete() {
+        if (!this.$.document.isNew) {
+          this.$.document.destroy();
+        }
+
+        return Promise.resolve();
+      },
+
+      signOut() {
+        if (this.$.auth) {
+          this.$.auth.signOut();
+        }
+      }
+    };
+
+    Polymer.DekoAppBehavior = [
+      Polymer.AppNetworkStatusBehavior,
+      Polymer.DekoAppBehaviorImpl
+    ];
+  })();
+</script>
