@@ -39,10 +39,8 @@
       </template>
     </div>
     <paper-fab icon="add" disabled="[[!online]]" on-tap="create"></paper-fab>
-    <firebase-document id="document" app-name="decks" path="[[editableNoteId]]" data="{{editableNote}}">
-    </firebase-document>
-    <da-editor id="editor" deck="{{editableNote}}" on-close="commitChange">
-    </da-editor>
+    <firebase-document id="document" app-name="decks" path="[[editableDeckId]]" data="{{editableDeck}}"></firebase-document>
+    <da-editor id="editor" deck="{{editableDeck}}" on-close="commitChange"></da-editor>
   </template>
 </dom-module>
 <script>
