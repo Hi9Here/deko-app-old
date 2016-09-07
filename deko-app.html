@@ -58,7 +58,7 @@
           return '/decks/' + this.user.uid
         },
         toEditableId(deckId) {
-          return `${this.decksPath}/${deckId}`
+          return this.decksPath +'/'+ deckId
         },
         signIn() {
           this.$.auth.signInWithPopup()
