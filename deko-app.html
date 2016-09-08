@@ -91,7 +91,7 @@
           return '/decks'
         },
         toEditableId: function(deckId) {
-          if (this.theDeck.$key) {
+          if (this.theDeck && this.theDeck.$key) {
             return this.theDeck.$key +"/cards/"+DeckId
           } else {
             return DeckId
