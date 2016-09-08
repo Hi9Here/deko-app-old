@@ -22,7 +22,7 @@
         </template>
       </template>
       <template is="dom-if" if="{{routeData.deck}}">
-        deck here
+        {{getData(routeData.deck,persistedData)}}
       </template>
     </div>
     <template is="dom-if" if="{{!editMode}}">
@@ -88,6 +88,9 @@
         },
         signIn: function() {
           this.$.auth.signInWithPopup()
+        },
+        getData: function(a,k) {
+          console.log(a,k)
         }
       });
     })();
