@@ -88,7 +88,7 @@
           return this.online
         },
         get decksPath() {
-          if (this.theDeck["$key"]) {
+          if (this.theDeck && this.theDeck["$key"]) {
             return '/decks/' + this.theDeck["$key"] + "/cards"
           } else {
             return '/decks'
