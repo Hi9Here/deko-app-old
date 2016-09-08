@@ -64,7 +64,7 @@
           } else {
             console.log(e,d)
             let deckElement = Polymer.dom(event).localTarget;
-            window.location.href = "/" + deckElement.id
+            this.routeData = {deck: deckElement.id)
           }
         },
         done: function(){
