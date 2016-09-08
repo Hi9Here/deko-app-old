@@ -69,6 +69,19 @@
         if (this.$.auth) {
           this.$.auth.signOut()
         }
+      },
+      objectToArray:function(data) {
+        var output = []
+        if (data) {
+          var keys = Object.keys(data)
+          for (var i = 0; i < keys.length; i++) {
+            if (typeof data[keys[i]] === 'object') {
+              data[keys[i]]["$key"] = keys[i]
+              output.push(data[keys[i]])
+            }
+          }
+        }
+        return output
       }
     }
     Polymer.DekoAppBehavior = [
