@@ -23,7 +23,7 @@
       </template>
       <template is="dom-if" if="{{routeData.deck}}">
         {{theDeck.title}}<>
-        <template is="dom-repeat" items="theDeck.cards" as="card">
+        <template is="dom-repeat" items="{{theDeck.cards}}" as="card">
           <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
         </template>
       </template>
@@ -97,11 +97,13 @@
           this.$.auth.signInWithPopup()
         },
         getTheDeck: function(k,a) {
+          console.log(k,a)
           function isTheOne(deck) {
             return deck["$key"] === k;
           }
           var thedesks = a.filter(isTheOne)
           if (thedesks.length > 0 ) {
+            console.log(thedesks[0])
             return thedesks[0]
           }
         }
