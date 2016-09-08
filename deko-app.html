@@ -22,7 +22,7 @@
         </template>
       </template>
       <template is="dom-if" if="{{routeData.deck}}">
-        {{theDeck.title}}
+        {{theDeck.title}}<>
         <template is="dom-repeat" items="theDeck.cards" as="card">
           <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
         </template>
