@@ -59,10 +59,11 @@
         log: function(a,b){
           console.log(a,b)
         },
-        done: function(e){
+        done: function(){
           this.editMode = false
         },
-        fabEdit: function(e){
+        fabEdit: function(){
+          console.log(this.data)
           this.editMode = true
         },
         get isEditable() {
