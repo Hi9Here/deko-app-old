@@ -89,7 +89,7 @@
         },
         get decksPath() {
           if (this.theDeck["$key"]) {
-            return '/decks' + this.theDeck["$key"] + "/cards/"
+            return '/decks/' + this.theDeck["$key"] + "/cards"
           } else {
             return '/decks'
           }
