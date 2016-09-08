@@ -4,7 +4,7 @@
     "The Polymer Authors","Marcus7777"
   ],
   "version": "1.0.0",
-  "description": "An offline-ready app for making decks of cards.",
+  "description": "Making decks of cards.",
   "dependencies": {
     "platinum-sw": "polymerelements/platinum-sw#^1.3.0",
     "app-storage": "polymerelements/app-storage#^0.9.0",
