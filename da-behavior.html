@@ -32,8 +32,8 @@
 
       create: function() {
         if (this.isEditable) {
-          if (this.theDeck.$key) {
-            this.editableDeckId = this.theDeck.$key +"/cards/"
+          if (this.theDeck["$key"]) {
+            this.editableDeckId = this.theDeck["$key"] + "/cards/"
           } else {
             this.editableDeckId = null 
           }
@@ -42,24 +42,23 @@
       },
 
       commitChange: function(event) {
-        var changeCommits;
-
+        var changeCommits
         switch (event.detail) {
           case 'save':
-            changeCommits = this.save();
-            break;
+            changeCommits = this.save()
+            break
           case 'delete':
-            changeCommits = this.delete();
-            break;
+            changeCommits = this.delete()
+            break
           default:
-            changeCommits = Promise.resolve();
-            break;
+            changeCommits = Promise.resolve()
+            break
         }
 
         if (this.$.query && this.$.query.refresh) {
           changeCommits.then(() => {
-            this.$.query.refresh();
-          });
+            this.$.query.refresh()
+          })
         }
       },
 
@@ -68,8 +67,8 @@
             (this.editableDeck.title ||
              this.editableDeck.body)) {
           return this.$.document.save(this.decksPath).then(() => {
-            this.$.document.reset();
-          });
+            this.$.document.reset()
+          })
         }
 
         return Promise.resolve();
@@ -77,15 +76,15 @@
 
       delete: function() {
         if (!this.$.document.isNew) {
-          this.$.document.destroy();
+          this.$.document.destroy()
         }
 
-        return Promise.resolve();
+        return Promise.resolve()
       },
 
       signOut: function() {
         if (this.$.auth) {
-          this.$.auth.signOut();
+          this.$.auth.signOut()
         }
       }
     };
