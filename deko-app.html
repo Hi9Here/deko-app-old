@@ -88,7 +88,11 @@
           return this.online
         },
         get decksPath() {
-          return '/decks'
+          if (this.theDeck["$key"]) {
+            return '/decks' + this.theDeck["$key"] + "/cards/"
+          } else {
+            return '/decks'
+          }
         },
         signIn: function() {
           this.$.auth.signInWithPopup()
