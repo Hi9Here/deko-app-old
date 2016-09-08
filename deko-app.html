@@ -89,11 +89,12 @@
         signIn: function() {
           this.$.auth.signInWithPopup()
         },
-        getData: function(a,k) {
+        getData: function(k,a) {
           function isTheOne(deck) {
             return deck["$key"] === k;
           }
           console.log(a.filter(isTheOne))
+          return a.filter(isTheOne)
         }
       });
     })();
