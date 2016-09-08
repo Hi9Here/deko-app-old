@@ -28,11 +28,7 @@
       },
       create: function() {
         if (this.isEditable) {
-          if (this.theDeck["$key"]) {
-            this.savePath = this.theDeck["$key"] + "/cards/"
-          } else {
-            this.savePath = null
-          }
+          this.savePath = null
           this.$.editor.open();
         }
       },
