@@ -91,7 +91,11 @@
           return '/decks'
         },
         toEditableId: function(deckId) {
-          return this.decksPath +'/'+ deckId
+          if (this.theDeck.$key) {
+            return this.theDeck.$key +"/cards/"+DeckId
+          } else {
+            return DeckId
+          }
         },
         signIn: function() {
           this.$.auth.signInWithPopup()
