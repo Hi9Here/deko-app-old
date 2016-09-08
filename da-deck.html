@@ -44,15 +44,8 @@
         pointer-events: none;
       }
     </style>
-    <h1
-        id="title"
-        class$="[[emptyClass(title, editable)]]"
-        contenteditable$="[[editable]]"></h1>
-    <p
-        id="body"
-        class$="[[emptyClass(body, editable)]]"
-        contenteditable$="[[editable]]"></p>
-    <!-- <p class="empty" hidden$="[[!propertiesAreEmpty(title, body, editable)]]">Tap to edit this note...</p> -->
+    <h1 id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></h1>
+    <p id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></p>
   </template>
   <script>
     Polymer({
@@ -100,7 +93,6 @@
         return true;
       },
       updateTextContent(title, body) {
-        console.log(arguments);
         this.$.title.textContent = title;
         this.$.body.textContent = body;
       },
