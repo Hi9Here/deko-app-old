@@ -60,7 +60,7 @@
         },
         tapped: function(e,d){
           if (this.editMode) {
-            this.edit()
+            this.edit(e,d)
           } else {
             console.log(e,d)
             window.location.href = "/" + "id"
