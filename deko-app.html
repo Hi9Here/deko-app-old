@@ -18,7 +18,9 @@
         <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
       </template>
     </div>
-    <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
+    <template is="dom-if" if="{{!edit}}">
+      <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
+    </template>
     <template is="dom-if" if="{{edit}}">
       <paper-toolbar style="bottom: 0;width: 99vw;position: absolute;"><h1>Tap deck to edit</h1><paper-button style="right:0;position: absolute;" on-tap="done">Done</paper-button></paper-toolbar>
     </template>
@@ -41,6 +43,10 @@
               {label:"Add", icon:"add",   fire:{type:"add"} }
             ],
             type: Array
+          },
+          edit:{
+            type:Boolean,
+            value:false,
           }
         },
         done: function(e){
