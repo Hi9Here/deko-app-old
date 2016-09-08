@@ -92,9 +92,9 @@
         },
         toEditableId: function(deckId) {
           if (this.theDeck && this.theDeck.$key) {
-            return this.theDeck.$key +"/cards/"+DeckId
+            return this.theDeck.$key +"/cards/"+deckId
           } else {
-            return DeckId
+            return deckId
           }
         },
         signIn: function() {
