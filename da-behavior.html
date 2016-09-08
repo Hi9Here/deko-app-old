@@ -5,20 +5,17 @@
 
     Polymer.DekoAppBehaviorImpl = {
       properties: {
-        editableDeckId: {
+        savePath: {
           type: String,
           notify: true
         }
       },
-
       get decksPath() {
         return '';
       },
-
       get isEditable() {
         return true;
       },
-
       edit: function(event) {
         if (this.isEditable) {
           let deckElement = Polymer.dom(event).localTarget;
@@ -29,18 +26,16 @@
           });
         }
       },
-
       create: function() {
         if (this.isEditable) {
           if (this.theDeck["$key"]) {
-            this.editableDeckId = this.theDeck["$key"] + "/cards/"
+            this.savePath = this.theDeck["$key"] + "/cards/"
           } else {
-            this.editableDeckId = null 
+            this.savePath = null
           }
           this.$.editor.open();
         }
       },
-
       commitChange: function(event) {
         var changeCommits
         switch (event.detail) {
@@ -54,41 +49,32 @@
             changeCommits = Promise.resolve()
             break
         }
-
         if (this.$.query && this.$.query.refresh) {
           changeCommits.then(() => {
             this.$.query.refresh()
           })
         }
       },
-
       save: function() {
-        if (this.$.document.isNew &&
-            (this.editableDeck.title ||
-             this.editableDeck.body)) {
+        if (this.$.document.isNew && (this.editableDeck.title || this.editableDeck.body)) {
           return this.$.document.save(this.decksPath).then(() => {
             this.$.document.reset()
           })
         }
-
         return Promise.resolve();
       },
-
       delete: function() {
         if (!this.$.document.isNew) {
           this.$.document.destroy()
         }
-
         return Promise.resolve()
       },
-
       signOut: function() {
         if (this.$.auth) {
           this.$.auth.signOut()
         }
       }
-    };
-
+    }
     Polymer.DekoAppBehavior = [
       Polymer.AppNetworkStatusBehavior,
       Polymer.DekoAppBehaviorImpl
