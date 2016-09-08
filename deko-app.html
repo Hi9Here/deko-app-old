@@ -16,10 +16,16 @@
     <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
     <app-indexeddb-mirror session="[[user.uid]]" key="decks" data="{{data}}" persisted-data="{{persistedData}}"></app-indexeddb-mirror>
     <div class="decks">
-      <template is="dom-repeat" items="[[persistedData]]" as="deck">
-        <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
+      <template is="dom-if" if="{{!routeData.deck}}">
+        <template is="dom-repeat" items="[[persistedData]]" as="deck">
+          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
+        </template>
       </template>
-      {{routeData.deck}}
+      <template is="dom-if" if="{{routeData.deck}}">
+        <template is="dom-repeat" items="[[persistedData]]" as="deck">
+          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
+        </template>
+      </template>
     </div>
     <template is="dom-if" if="{{!editMode}}">
       <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
@@ -52,20 +58,17 @@
           editMode:{
             type:Boolean,
             value:false,
-          },
-          routeData: {
-            observer: "log"
           }
-        },
-        log: function(a,b){
-          console.log(a,b)
         },
         done: function(){
           this.editMode = false
         },
         fabEdit: function(){
-          console.log(this.data)
-          this.editMode = true
+          if (this.persistedData.length > 0) {
+            this.editMode = true
+          } else {
+            this.create()
+          }
         },
         get isEditable() {
           return this.online
