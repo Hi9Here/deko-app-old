@@ -19,7 +19,7 @@
         return true;
       },
 
-      toEditableId(DeckId) {
+      toEditableId: function(DeckId) {
         if (this.theDeck.$key) {
           return this.theDeck.$key +"/cards/"+DeckId
         } else {
@@ -27,7 +27,7 @@
         }
       },
 
-      edit(event) {
+      edit: function(event) {
         if (this.isEditable) {
           let deckElement = Polymer.dom(event).localTarget;
           this.editableDeckId = this.toEditableId(deckElement.id);
@@ -38,14 +38,18 @@
         }
       },
 
-      create() {
+      create: function() {
         if (this.isEditable) {
-          this.editableDeckId = null;
+          if (this.theDeck.$key) {
+            this.editableDeckId = this.theDeck.$key +"/cards/"
+          } else {
+            this.editableDeckId = null 
+          }
           this.$.editor.open();
         }
       },
 
-      commitChange(event) {
+      commitChange: function(event) {
         var changeCommits;
 
         switch (event.detail) {
@@ -67,7 +71,7 @@
         }
       },
 
-      save() {
+      save: function() {
         if (this.$.document.isNew &&
             (this.editableDeck.title ||
              this.editableDeck.body)) {
@@ -79,7 +83,7 @@
         return Promise.resolve();
       },
 
-      delete() {
+      delete: function() {
         if (!this.$.document.isNew) {
           this.$.document.destroy();
         }
@@ -87,7 +91,7 @@
         return Promise.resolve();
       },
 
-      signOut() {
+      signOut: function() {
         if (this.$.auth) {
           this.$.auth.signOut();
         }
