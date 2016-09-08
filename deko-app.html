@@ -1,5 +1,8 @@
 <link rel="import" href="da-elements.html">
 <link rel="import" href="../fab-menu/fab-menu.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
 <link rel="import" href="../app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../polymerfire/polymerfire.html">
 <dom-module id="deko-app">
@@ -16,6 +19,7 @@
       </template>
     </div>
     <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
+    <paper-toolbar style="bottom: 0;width: 99vw;position: absolute;"><h1>Tap deck to edit</h1><paper-button style="right:0;position: absolute;" on-tap="press">Done</paper-button></paper-toolbar>
     <firebase-document id="document" app-name="decks" path="[[editableDeckId]]" data="{{editableDeck}}"></firebase-document>
     <da-editor id="editor" deck="{{editableDeck}}" on-close="commitChange" uid="{{user.uid}}"></da-editor>
   </template>
