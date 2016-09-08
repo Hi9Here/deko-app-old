@@ -19,14 +19,6 @@
         return true;
       },
 
-      toEditableId: function(DeckId) {
-        if (this.theDeck.$key) {
-          return this.theDeck.$key +"/cards/"+DeckId
-        } else {
-          return DeckId
-        }
-      },
-
       edit: function(event) {
         if (this.isEditable) {
           let deckElement = Polymer.dom(event).localTarget;
