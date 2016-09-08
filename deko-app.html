@@ -19,7 +19,7 @@
       <template is="dom-repeat" items="[[persistedData]]" as="deck">
         <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
       </template>
-      {{routeData}}
+      {{routeData.deck}}
     </div>
     <template is="dom-if" if="{{!editMode}}">
       <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
