@@ -22,9 +22,7 @@
         </template>
       </template>
       <template is="dom-if" if="{{routeData.deck}}">
-        <template is="dom-repeat" items="[[persistedData]]" as="deck">
-          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
-        </template>
+        deck
       </template>
     </div>
     <template is="dom-if" if="{{!editMode}}">
