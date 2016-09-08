@@ -34,10 +34,10 @@
     <template is="dom-if" if="{{editMode}}">
       <paper-toolbar style="bottom: 12px;width: 100vw;position: absolute;"><h1>Tap deck to edit</h1><paper-button style="right:0;position: absolute;" on-tap="done">Done</paper-button></paper-toolbar>
     </template>
-    <firebase-document id="document" app-name="decks" path="[[editableDeckId]]" data="{{editableDeck}}"></firebase-document>
     <da-editor id="editor" deck="{{editableDeck}}" on-close="commitChange" uid="{{user.uid}}"></da-editor>
     <app-location route="{{route}}"></app-location>
     <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
+    <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editableDeck}}"></firebase-document>
   </template>
 </dom-module>
 <script>
