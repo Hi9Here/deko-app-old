@@ -18,7 +18,7 @@
     <div class="decks">
       <template is="dom-if" if="{{!routeData.deck}}">
         <template is="dom-repeat" items="[[persistedData]]" as="deck">
-          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="edit"></da-deck>
+          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tapped"></da-deck>
         </template>
       </template>
       <template is="dom-if" if="{{routeData.deck}}">
@@ -56,6 +56,14 @@
           editMode:{
             type:Boolean,
             value:false,
+          }
+        },
+        tapped: function(e,d){
+          if (this.editMode) {
+            this.edit()
+          } else {
+            console.log(e,d)
+            window.location.href = "/" + "id"
           }
         },
         done: function(){
