@@ -20,7 +20,11 @@
       },
 
       toEditableId(DeckId) {
-        return DeckId;
+        if (this.theDeck.$key) {
+          return this.theDeck.$key +"/cards/"+DeckId
+        } else {
+          return DeckId
+        }
       },
 
       edit(event) {
