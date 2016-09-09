@@ -114,8 +114,8 @@
           }
           var thedesks = a.filter(isTheOne)
           if (thedesks.length > 0 ) {
-            if (this.$$("template.cards")) {
-              this.$$("template.cards").render()
+            if (cards = this.$$("template.cards")) {
+              cards.render()
             }
             return thedesks[0]
           }
