@@ -18,9 +18,8 @@
       },
       edit: function(event) {
         if (this.isEditable) {
-          let deckElement = Polymer.dom(event).localTarget;
-          this.editableDeckId = this.toEditableId(deckElement.id);
-
+          let deckElement = Polymer.dom(event).localTarget
+          this.editableDeckId = deckElement.id
           this.$.document.transactionsComplete.then(() => {
             this.$.editor.open(deckElement);
           });
