@@ -59,7 +59,11 @@
             this.$.document.reset()
           })
         }
-        return Promise.resolve();
+        var cards
+        if (cards = this.$$("template.cards")) {
+          cards.render()
+        }
+        return Promise.resolve()
       },
       delete: function() {
         if (!this.$.document.isNew) {
