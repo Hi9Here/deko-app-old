@@ -65,7 +65,7 @@
             computed: "getTheDeck(routeData.deck,persistedData)"
           },
           cards:{
-            computed: "objectToArray(theDeck.cards, theDeck.cards.*)"
+            computed: "objectToArray(theDeck.cards, persistedData.*.cards.*)"
           }
         },
         tapped: function(e,d){
