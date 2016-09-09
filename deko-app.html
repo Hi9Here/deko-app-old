@@ -16,14 +16,14 @@
     <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
     <app-indexeddb-mirror session="[[user.uid]]" key="decks" data="{{data}}" persisted-data="{{persistedData}}"></app-indexeddb-mirror>
     <div class="decks">
-      <template is="dom-if" if="{{!routeData.deck}}">
+      <template is="dom-if" if="{{!routeData.deck}}" restamp>
         <template is="dom-repeat" items="[[persistedData]]" as="deck">
           <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tapped"></da-deck>
         </template>
       </template>
-      <template is="dom-if" if="{{routeData.deck}}">
-        {{theDeck.title}}<>
-        <template is="dom-repeat" items="{{objectToArray(theDeck.cards, theDeck.cards.*)}}" as="card">
+      <template is="dom-if" if="{{routeData.deck}}" restamp>
+        {{theDeck.title}}
+        <template is="dom-repeat" items="{{cards}}" as="card">
           <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
         </template>
       </template>
@@ -62,7 +62,10 @@
           },
           theDeck:{
             type:Object,
-            computed:"getTheDeck(routeData.deck,persistedData)",
+            computed: "getTheDeck(routeData.deck,persistedData)"
+          },
+          cards:{
+            computed: "objectToArray(theDeck.cards, theDeck.cards.*)"
           }
         },
         tapped: function(e,d){
