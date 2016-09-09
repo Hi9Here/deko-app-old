@@ -22,7 +22,7 @@
         </template>
       </template>
       <template is="dom-if" if="{{routeData.deck}}" restamp>
-        <template is="dom-repeat" items="[[cards]]" as="card">
+        <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
           <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
         </template>
       </template>
@@ -106,7 +106,8 @@
           }
           var thedesks = a.filter(isTheOne)
           if (thedesks.length > 0 ) {
-            console.log(thedesks[0])
+            console.log(this.$$("template.cards"))
+            this.$$("template.cards")[0].render()
             return thedesks[0]
           }
         }
