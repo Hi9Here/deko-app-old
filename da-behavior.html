@@ -70,7 +70,7 @@
           this.$.auth.signOut()
         }
       },
-      objectToArray:function(data) {
+      objectToArray: function(data) { //rewrite as .map
         var output = []
         if (data) {
           var keys = Object.keys(data)
