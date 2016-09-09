@@ -112,12 +112,12 @@
           this.__editedDeckElement.style.opacity = 1;
           this.__editedDeckElement = null;
         }
-        var cards
-        if (cards = this.$$("template.cards")) {
-          cards.render()
-        }
         this.fire('close', detail, { bubbles: false });
         this.transitionOut().then(() => {
+          var cards
+          if (cards = this.$$("template.cards")) {
+            cards.render()
+          }
           Polymer.dom(this).classList.remove('open');
           this._setOpened(false);
         });
