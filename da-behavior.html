@@ -16,6 +16,9 @@
       get isEditable() {
         return true;
       },
+      toEditableId: function(id) {
+        return id
+      },
       edit: function(event) {
         if (this.isEditable) {
           let deckElement = Polymer.dom(event).localTarget
