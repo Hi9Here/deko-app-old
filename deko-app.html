@@ -67,12 +67,20 @@
             computed: "objectToArray(theDeck.cards)"
           }
         },
+        cardTapped: function(e,d){
+          if (this.editMode) {
+            this.edit(e,d)
+          } else {
+            let cardElement = Polymer.dom(e).localTarget;
+            console.log(cardElement)
+          }
+        },
         tapped: function(e,d){
           if (this.editMode) {
             this.edit(e,d)
           } else {
             console.log(e,d)
-            let deckElement = Polymer.dom(event).localTarget;
+            let deckElement = Polymer.dom(e).localTarget;
             this.routeData = {deck: deckElement.id}
           }
         },
