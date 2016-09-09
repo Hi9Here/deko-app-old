@@ -19,7 +19,7 @@
       edit: function(event) {
         if (this.isEditable) {
           let deckElement = Polymer.dom(event).localTarget
-          this.editableDeckId = deckElement.id
+          this.savePath = deckElement.id
           this.$.document.transactionsComplete.then(() => {
             this.$.editor.open(deckElement);
           });
