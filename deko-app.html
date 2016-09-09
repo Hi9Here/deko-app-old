@@ -104,6 +104,9 @@
             return '/decks'
           }
         },
+        toEditableId: function(id) {
+          return this.decksPath+"/"+id
+        },
         signIn: function() {
           this.$.auth.signInWithPopup()
         },
