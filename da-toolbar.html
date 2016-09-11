@@ -38,9 +38,9 @@
     <iron-icon icon="cloud" hidden$="[[!online]]"></iron-icon>
     <iron-icon icon="cloud-off" hidden$="[[online]]"></iron-icon>
     <paper-icon-button
-        icon="[[computeLockIcon(signedIn)]]"
-        disabled="[[!signedIn]]"
-        on-tap="lock">
+      icon="[[computeLockIcon(signedIn)]]"
+      disabled="[[!signedIn]]"
+      on-tap="lock">
     </paper-icon-button>
   </template>
   <script>
