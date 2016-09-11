@@ -1,98 +1,88 @@
 <link rel="import" href="../app-storage/app-network-status-behavior.html">
 <script>
-  (() => {
-    'use strict';
-
-    Polymer.DekoAppBehaviorImpl = {
-      properties: {
-        savePath: {
-          type: String,
-          notify: true
-        }
-      },
-      get decksPath() {
-        return '';
-      },
-      get isEditable() {
-        return true;
-      },
-      toEditableId: function(id) {
-        return id
-      },
-      edit: function(event) {
-        if (this.isEditable) {
-          let deckElement = Polymer.dom(event).localTarget
-          this.savePath = this.toEditableId(deckElement.id)
-          this.$.document.transactionsComplete.then(() => {
-            this.$.editor.open(deckElement);
-          });
-        }
-      },
-      create: function() {
-        if (this.isEditable) {
-          this.savePath = null
-          this.$.editor.open();
-        }
-      },
-      commitChange: function(event) {
-        var changeCommits
-        switch (event.detail) {
-          case 'save':
-            changeCommits = this.save()
-            break
-          case 'delete':
-            changeCommits = this.delete()
-            break
-          default:
-            changeCommits = Promise.resolve()
-            break
-        }
-        if (this.$.query && this.$.query.refresh) {
-          changeCommits.then(() => {
-            this.$.query.refresh()
-          })
-        }
-      },
-      save: function() {
-        if (this.$.document.isNew && (this.editableDeck.title || this.editableDeck.body)) {
-          return this.$.document.save(this.decksPath).then(() => {
-            this.$.document.reset()
-          })
-        }
-        var cards
-        if (cards = this.$$("template.cards")) {
-          cards.render()
-        }
-        return Promise.resolve()
-      },
-      delete: function() {
-        if (!this.$.document.isNew) {
-          this.$.document.destroy()
-        }
-        return Promise.resolve()
-      },
-      signOut: function() {
-        if (this.$.auth) {
-          this.$.auth.signOut()
-        }
-      },
-      objectToArray: function(data) { //rewrite as .map
-        var output = []
-        if (data) {
-          var keys = Object.keys(data)
-          for (var i = 0; i < keys.length; i++) {
-            if (typeof data[keys[i]] === 'object') {
-              data[keys[i]]["$key"] = keys[i]
-              output.push(data[keys[i]])
-            }
+  Polymer.DekoAppBehaviorImpl = {
+    properties: {
+      savePath: {
+        type: String,
+        notify: true
+      }
+    },
+    toEditableId: function(id) {
+      return id
+    },
+    edit: function(event) {
+      if (this.isEditable) {
+        let deckElement = Polymer.dom(event).localTarget
+        this.savePath = this.toEditableId(deckElement.id)
+        this.$.document.transactionsComplete.then(() => {
+          this.$.editor.open(deckElement);
+        });
+      }
+    },
+    create: function() {
+      if (this.isEditable) {
+        this.savePath = null
+        this.$.editor.open();
+      }
+    },
+    commitChange: function(event) {
+      var changeCommits
+      switch (event.detail) {
+        case 'save':
+          changeCommits = this.save()
+          break
+        case 'delete':
+          changeCommits = this.delete()
+          break
+        default:
+          changeCommits = Promise.resolve()
+          break
+      }
+      if (this.$.query && this.$.query.refresh) {
+        changeCommits.then(() => {
+          this.$.query.refresh()
+        })
+      }
+    },
+    save: function() {
+      if (this.$.document.isNew && (this.editableDeck.title || this.editableDeck.body)) {
+        return this.$.document.save(this.decksPath).then(() => {
+          this.$.document.reset()
+        })
+      }
+      var cards
+      if (cards = this.$$("template.cards")) {
+        cards.render()
+      }
+      return Promise.resolve()
+    },
+    delete: function() {
+      if (!this.$.document.isNew) {
+        this.$.document.destroy()
+      }
+      return Promise.resolve()
+    },
+    signOut: function() {
+      if (this.$.auth) {
+        this.$.auth.signOut()
+      }
+    },
+    objectToArray: function(data) { //rewrite as .map
+      var output = []
+      if (data) {
+        var keys = Object.keys(data)
+        for (var i = 0; i < keys.length; i++) {
+          if (typeof data[keys[i]] === 'object') {
+            data[keys[i]]["$key"] = keys[i]
+            output.push(data[keys[i]])
           }
         }
-        return output
       }
+      return output
     }
-    Polymer.DekoAppBehavior = [
-      Polymer.AppNetworkStatusBehavior,
-      Polymer.DekoAppBehaviorImpl
-    ];
-  })();
+  }
+  Polymer.DekoAppBehavior = [
+    Polymer.AppNetworkStatusBehavior,
+    Polymer.DekoAppBehaviorImpl
+  ]
 </script>
