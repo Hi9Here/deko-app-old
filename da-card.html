@@ -85,8 +85,8 @@
       <iron-icon icon="perm-identity"></iron-icon>
     </paper-toolbar>
     <div id="topContent">
-      <paper-input id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></paper-input>
-      <paper-input id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></paper-input>
+      <paper-input>{{title}}</paper-input>
+      <paper-input>{{body}}</paper-input>
     </div>
   </template>
   <script>
