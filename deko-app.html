@@ -38,7 +38,7 @@
       <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
     </paper-dialog>
     <paper-dialog id="editDialogCard">
-      <da-editor-card id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
+      <da-editor-card id="editor" card="{{editableCard}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
     </paper-dialog>
     <app-location route="{{route}}"></app-location>
     <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
@@ -100,7 +100,7 @@
     },
     tappedCard: function(e,d){
       if (this.editMode) {
-        this.edit(e,d)
+        this.editCard(e,d)
         this.$.editDialogCard.open()
       } else {
         var cardElement = Polymer.dom(e).localTarget;
