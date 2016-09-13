@@ -11,13 +11,16 @@
     toEditableId: function(id) {
       return id
     },
+    editCard: function(event) {
+      if (this.isEditable) {
+        var cardElement = Polymer.dom(event).localTarget
+        this.savePath = this.toEditableId(cardElement.id)
+      }
+    },
     edit: function(event) {
       if (this.isEditable) {
         var deckElement = Polymer.dom(event).localTarget
         this.savePath = this.toEditableId(deckElement.id)
-        this.$.document.transactionsComplete.then(() => {
-          this.$.editor.open(deckElement);
-        });
       }
     },
     create: function() {
