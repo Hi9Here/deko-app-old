@@ -64,7 +64,10 @@
       }
     </style>
     <div id="background"></div>
-    <da-deck id="deck" title="{{deck.title}}" body="{{deck.body}}" editable></da-deck>
+    
+      <paper-input value="{{deck.title}}"></paper-input>
+      <paper-input value="{{deck.body}}"></paper-input>
+    
     <div class="controls">
       <paper-button on-tap="delete">Delete</paper-button>
       <paper-button on-tap="save">Done</paper-button>
