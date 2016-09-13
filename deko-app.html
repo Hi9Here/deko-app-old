@@ -78,7 +78,23 @@
       }
     },
     close: function(event) {
-      console.log(event)
+      var changeCommits;
+      switch (event.detail) {
+        case 'save':
+          changeCommits = this.save();
+          break;
+        case 'delete':
+          changeCommits = this.delete();
+          break;
+        default:
+          changeCommits = Promise.resolve();
+          break;
+      }
+      if (this.$.query && this.$.query.refresh) {
+        changeCommits.then(() => {
+          this.$.query.refresh();
+        });
+      }
       this.$.editDialogDeck.close()
       this.$.editDialogCard.close()
     },
