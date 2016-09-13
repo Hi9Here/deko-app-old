@@ -10,7 +10,7 @@
 <dom-module id="deko-app">
   <template>
     <style include="deko-app-shared-styles"></style>
-    <da-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut"><a href=\ > < </a> [[theDeck.title]]</da-toolbar>
+    <da-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut"><a href=\ ><paper-button> < </paper-button></a> [[theDeck.title]]</da-toolbar>
     <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
     <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
     <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
