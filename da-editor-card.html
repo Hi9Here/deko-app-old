@@ -4,8 +4,8 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="da-editor-card">
   <template>
-    <paper-input value="{{deck.title}}"></paper-input>
-    <paper-input value="{{deck.body}}"></paper-input>
+    <paper-input value="{{card.title}}"></paper-input>
+    <paper-input value="{{card.body}}"></paper-input>
     <div class="buttons">
       <paper-button on-tap="delete">Delete</paper-button>
       <paper-button on-tap="save">Done</paper-button>
@@ -15,7 +15,7 @@
     Polymer({
       is: 'da-editor-card',
       properties: {
-        deck: {
+        card: {
           type: Object,
           notify: true
         },
