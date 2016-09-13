@@ -27,7 +27,6 @@
         },
       },
       open: function(deckElement) {
-        this._setOpened(true);
         this.__editedDeckElement = deckElement;
         if (deckElement) {
           deckElement.style.opacity = 0;
@@ -36,7 +35,6 @@
         }
       },
       create: function() {
-        this._setOpened(true)
         var players = {}
         players[this.uid] = true
         this.deck = { title: '', body: '', players: players }
