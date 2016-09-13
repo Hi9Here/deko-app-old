@@ -4,71 +4,9 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="da-editor">
   <template>
-    <style>
-      :host {
-        display: none;
-        position: absolute;
-        overflow: hidden;
-        top: 46px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-      }
-      :host([opened]) {
-        display: block;
-      }
-      :host(.open) {
-        background-color: var(--paper-purple-500);
-      }
-      paper-button {
-        color: var(--paper-purple-50);
-      }
-      #background {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: 512px;
-        width: 256px;
-        height: 256px;
-        background-color: var(--paper-purple-500);
-        transform-origin: 128px 128px;
-      }
-      da-deck {
-        display: block;
-        position: absolute;
-        top: 0px;
-        left: 0px;
-      }
-      :host(.open) da-deck {
-        position: relative;
-        margin: auto;
-        width: calc(100vw - 20px);
-        max-width: 480px;
-      }
-      .controls {
-        display: block;
-        position: relative;
-        margin: 10px auto;
-        width: calc(100vw - 20px);
-        max-width: 480px;
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
-        justify-content: space-between;
-        transition: opacity 0.3s;
-        opacity: 0;
-      }
-      :host(.open) .controls {
-        opacity: 1;
-      }
-    </style>
-    <div id="background"></div>
-    
-      <paper-input value="{{deck.title}}"></paper-input>
-      <paper-input value="{{deck.body}}"></paper-input>
-    
-    <div class="controls">
+    <paper-input value="{{deck.title}}"></paper-input>
+    <paper-input value="{{deck.body}}"></paper-input>
+    <div class="buttons">
       <paper-button on-tap="delete">Delete</paper-button>
       <paper-button on-tap="save">Done</paper-button>
     </div>
