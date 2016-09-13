@@ -1,0 +1,156 @@
+<link rel="import" href="../paper-styles/shadow.html">
+<link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<dom-module id="da-deck">
+  <template>
+    <style>
+      :host {
+        box-sizing: border-box;
+        background-color: #fafafa;
+        color: #212121;
+        @apply(--paper-font-common-base);
+        @apply(--shadow-elevation-2dp);
+        border-radius: 5px;
+        width: 250px;
+        height: 350px;
+        display: inline-block;
+        margin-top: 15px;
+        margin: 5px;
+      }
+      .hidden {
+        display: none;
+      }
+      .placeholder:after {
+        content: 'Tap to Edit';
+        opacity: 0.5;d
+      }
+      .hidden {
+        display: none;
+      }
+      .empty {
+        font-style: italic;
+        color: #737373;
+        line-height: 0;
+        pointer-events: none;
+      }
+      #title {
+        font-size: 20px;
+        margin: 5px;
+      }
+      paper-toolbar .title {
+        margin-left: 0;
+        text-align: left;
+      }
+      paper-toolbar {
+        width: 250px;
+      }
+      #bottomToolbar {
+        position: absolute;
+        bottomL 0;
+      }
+      #bottomToolbar {
+        text-align: center;
+      }
+      #topContent {
+        height: 60px;
+        padding: 10px;
+        text-align: center;
+      }
+      #bottomContent {
+        height: 120px;
+        padding: 10px;
+        text-align: center;
+      }
+      #bottomContent iron-icon {
+        height: 120px;
+        width: 120px;
+      }
+      #bottomToolbar .title {
+        text-align: center;
+      }
+      .placeholder {
+        width: 100%;
+        text-align:center;
+        font-weight: 300;
+      }
+
+    </style>
+    
+        <paper-toolbar>      
+          <iron-icon icon="question-answer"></iron-icon>
+          <span class="title" title></span>
+          <iron-icon icon="perm-identity"></iron-icon>
+        </paper-toolbar>
+        <div id="topContent">
+          <paper-input id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></paper-input>
+          <paper-input id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></paper-input>
+        </div>
+        <div id="bottomContent">
+          <iron-icon icon="question-answer"></iron-icon>
+        </div>
+        <paper-toolbar id="bottomToolbar">
+          <div class="title">Q & A</div>
+        </paper-toolbar>
+        
+  </template>
+  <script>
+    Polymer({
+      is: 'da-deck',
+      properties: {
+        editable: {
+          type: Boolean,
+          reflectToAttribute: true,
+          value: false
+        },
+        title: {
+          type: String,
+          notify: true,
+          value: ''
+        },
+        body: {
+          type: String,
+          notify: true,
+          value: ''
+        },
+        lastUpdated: {
+          type: Number,
+          value: 0
+        }
+      },
+      listeners: {
+        input: 'onInput'
+      },
+      observers: [
+        'updateTextContent(title, body)'
+      ],
+      emptyClass(content, editable) {
+        if (editable) {
+          return !content ? 'placeholder' : '';
+        } else {
+          return !content ? 'hidden' : '';
+        }
+      },
+      propertiesAreEmpty() {
+        for (var i = 0; i < arguments.length; ++i) {
+          if (arguments[i]) {
+            return false;
+          }
+        }
+        return true;
+      },
+      updateTextContent(title, body) {
+        this.$.title.textContent = title;
+        this.$.body.textContent = body;
+      },
+      onInput() {
+        this.async(function() {
+          this.title = this.$.title.innerText;
+          this.body = this.$.body.innerText;
+        });
+      }
+    })
+  </script>
+</dom-module>

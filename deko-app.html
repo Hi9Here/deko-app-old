@@ -1,0 +1,129 @@
+<link rel="import" href="da-elements.html">
+<link rel="import" href="../app-route/app-route.html">
+<link rel="import" href="../app-route/app-location.html">
+<link rel="import" href="../fab-menu/fab-menu.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../polymerfire/polymerfire.html">
+
+<dom-module id="deko-app">
+  <template>
+    <style include="deko-app-shared-styles"></style>
+    <da-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut"><div id="deckTitile">[[theDeck.title]]</div></da-toolbar>
+    <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
+    <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
+    <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
+    <app-indexeddb-mirror session="[[user.uid]]" key="decks" data="{{data}}" persisted-data="{{persistedData}}"></app-indexeddb-mirror>
+    <div class="decks">
+      <template is="dom-if" if="{{!routeData.deck}}" restamp>
+        <template is="dom-repeat" items="[[persistedData]]" as="deck">
+          <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tapped"></da-deck>
+        </template>
+      </template>
+      <template is="dom-if" if="{{routeData.deck}}" restamp>
+        <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
+          <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
+        </template>
+      </template>
+    </div>
+    <template is="dom-if" if="{{!editMode}}">
+      <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
+    </template>
+    <template is="dom-if" if="{{editMode}}">
+      <paper-toolbar style="bottom: 12px;width: 100vw;position: absolute;"><h1>Tap to edit</h1><paper-button style="right:0;position: absolute;" on-tap="done">Done</paper-button></paper-toolbar>
+    </template>
+    <da-editor id="editor" deck="{{editableDeck}}" on-close="commitChange" uid="{{user.uid}}"></da-editor>
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
+    <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editableDeck}}"></firebase-document>
+  </template>
+</dom-module>
+<script>
+  (() => {
+    'use strict';
+      Polymer({
+        is: 'deko-app',
+          behaviors: [
+          Polymer.DekoAppBehavior
+        ],
+        properties: {
+          menu:{ 
+            value: [
+              {label:"Edit",icon:"create",fire:{type:"edit"}},
+              {label:"Add", icon:"add",   fire:{type:"add"} }
+            ],
+            type: Array
+          },
+          editMode:{
+            type:Boolean,
+            value:false,
+          },
+          theDeck:{
+            type:Object,
+            computed: "getTheDeck(routeData.deck,persistedData,persistedData.*)"
+          },
+          cards:{
+            computed: "objectToArray(theDeck.cards)"
+          }
+        },
+        tappedCard: function(e,d){
+          if (this.editMode) {
+            this.edit(e,d)
+          } else {
+            let cardElement = Polymer.dom(e).localTarget;
+            console.log(cardElement)
+          }
+        },
+        tapped: function(e,d){
+          if (this.editMode) {
+            this.edit(e,d)
+          } else {
+            console.log(e,d)
+            let deckElement = Polymer.dom(e).localTarget;
+            this.routeData = {deck: deckElement.id}
+          }
+        },
+        done: function(){
+          this.editMode = false
+        },
+        fabEdit: function(){
+          if (this.persistedData.length > 0) {
+            this.editMode = true
+          } else {
+            this.create()
+          }
+        },
+        get isEditable() {
+          return this.online
+        },
+        get decksPath() {
+          if (this.theDeck && this.theDeck["$key"]) {
+            return '/decks/' + this.theDeck["$key"] + "/cards"
+          } else {
+            return '/decks'
+          }
+        },
+        toEditableId: function(id) {
+          return this.decksPath+"/"+id
+        },
+        signIn: function() {
+          this.$.auth.signInWithPopup()
+        },
+        getTheDeck: function(k,a) {
+          console.log(k,a)
+          function isTheOne(deck) {
+            return deck["$key"] === k;
+          }
+          var thedesks = a.filter(isTheOne)
+          if (thedesks.length > 0 ) {
+            var cards
+            if (cards = this.$$("template.cards")) {
+              cards.render()
+            }
+            return thedesks[0]
+          }
+        }
+      });
+    })();
+  </script>
