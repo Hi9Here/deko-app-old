@@ -1,0 +1,59 @@
+<link rel="import" href="../paper-styles/color.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<dom-module id="da-editor-deck">
+  <template>
+    <paper-input value="{{deck.title}}"></paper-input>
+    <paper-input value="{{deck.body}}"></paper-input>
+    <div class="buttons">
+      <paper-button on-tap="delete">Delete</paper-button>
+      <paper-button on-tap="save">Done</paper-button>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'da-editor-deck',
+      properties: {
+        deck: {
+          type: Object,
+          notify: true
+        },
+        opened: {
+          type: Boolean,
+          reflectToAttribute: true,
+          readOnly: true,
+          value: false
+        },
+      },
+      open: function(deckElement) {
+        this._setOpened(true);
+        this.__editedDeckElement = deckElement;
+        if (deckElement) {
+          deckElement.style.opacity = 0;
+        } else {
+          this.create();
+        }
+      },
+      create: function() {
+        this._setOpened(true)
+        var players = {}
+        players[this.uid] = true
+        this.deck = { title: '', body: '', players: players }
+      },
+      save: function() {
+        this.close('save');
+      },
+      delete: function() {
+        this.close('delete');
+      },
+      close: function(detail) {
+        if (this.__editedDeckElement) {
+          this.__editedDeckElement.style.opacity = 1;
+          this.__editedDeckElement = null;
+        }
+        this.fire('close', detail, { bubbles: false });
+      }
+    })
+  </script>
+</dom-module>
