@@ -26,7 +26,11 @@
     create: function() {
       if (this.isEditable) {
         this.savePath = null
-        this.$.editor.open();
+        if (this.theDeck && this.theDeck["$key"]) {
+          this.$.editDialogCard.open()
+        } else {
+          this.$.editDialogDeck.open()
+        }
       }
     },
     commitChange: function(event) {
