@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "description": "Making decks of cards.",
   "dependencies": {
+    "paper-dialog": "PolymerElements/paper-dialog#7f31fa918f",
     "platinum-sw": "polymerelements/platinum-sw#^1.3.0",
     "app-storage": "polymerelements/app-storage#^0.9.0",
     "app-pouchdb": "polymerelements/app-pouchdb#^0.9.0",
