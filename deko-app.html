@@ -35,7 +35,7 @@
       <paper-toolbar style="bottom: 12px;width: 100vw;position: absolute;"><h1>Tap to edit</h1><paper-button style="right:0;position: absolute;" on-tap="done">Done</paper-button></paper-toolbar>
     </template>
     <paper-dialog id="editDialog">
-      <da-editor id="editor" deck="{{editableDeck}}" uid="{{user.uid}}"></da-editor>
+      <da-editor id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor>
     </paper-dialog>
     <app-location route="{{route}}"></app-location>
     <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
@@ -73,6 +73,9 @@
       cards:{
         computed: "objectToArray(theDeck.cards)"
       }
+    },
+    close: function() {
+      this.$.editDialog.close()
     },
     tappedCard: function(e,d){
       if (this.editMode) {
