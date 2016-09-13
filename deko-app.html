@@ -91,50 +91,49 @@
         this.edit(e,d)
         this.$.editDialog.open()
       } else {
-        let deckElement = Polymer.dom(e).localTarget;
-          this.routeData = {deck: deckElement.id}
-        }
-      },
-      done: function(){
-        this.editMode = false
-      },
-      fabEdit: function(){
-        if (this.persistedData.length > 0) {
-          this.editMode = true
-        } else {
-          this.create()
-        }
-      },
-      getIsEditable: function(online) {
-        return online
-      },
-      getDecksPath: function(theDeck) {
-        if (theDeck && theDeck["$key"]) {
-          return '/decks/' + theDeck["$key"] + "/cards"
-        } else {
-          return '/decks'
-        }
-      },
-      toEditableId: function(id) {
-        return this.decksPath+"/"+id
-      },
-      signIn: function() {
-        this.$.auth.signInWithPopup()
-      },
-      getTheDeck: function(k,a) {
-        console.log(k,a)
-        function isTheOne(deck) {
-          return deck["$key"] === k;
-        }
-        var thedesks = a.filter(isTheOne)
-        if (thedesks.length > 0 ) {
-          var cards
-          if (cards = this.$$("template.cards")) {
-            cards.render()
-          }
-          return thedesks[0]
-        }
+        var deckElement = Polymer.dom(e).localTarget
+        this.routeData = {deck: deckElement.id}
       }
-    })
-
-  </script>
+    },
+    done: function(){
+      this.editMode = false
+    },
+    fabEdit: function(){
+      if (this.persistedData.length > 0) {
+        this.editMode = true
+      } else {
+        this.create()
+      }
+    },
+    getIsEditable: function(online) {
+      return online
+    },
+    getDecksPath: function(theDeck) {
+      if (theDeck && theDeck["$key"]) {
+        return '/decks/' + theDeck["$key"] + "/cards"
+      } else {
+        return '/decks'
+      }
+    },
+    toEditableId: function(id) {
+      return this.decksPath+"/"+id
+    },
+    signIn: function() {
+      this.$.auth.signInWithPopup()
+    },
+    getTheDeck: function(k,a) {
+      console.log(k,a)
+      function isTheOne(deck) {
+        return deck["$key"] === k;
+      }
+      var thedesks = a.filter(isTheOne)
+      if (thedesks.length > 0 ) {
+        var cards
+        if (cards = this.$$("template.cards")) {
+          cards.render()
+        }
+        return thedesks[0]
+      }
+    }
+  })
+</script>
