@@ -79,19 +79,15 @@
       }
     </style>
     
-        <paper-toolbar>      
-          <iron-icon icon="editor:insert-comment"></iron-icon>
-          <span class="title" title></span>
-          <iron-icon icon="perm-identity"></iron-icon>
-        </paper-toolbar>
-        <div id="topContent">
-          <paper-input id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></paper-input>
-          <paper-input id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></paper-input>
-        </div>
-        <div id="bottomContent">
-          <iron-icon icon="question-answer"></iron-icon>
-        </div>
-
+    <paper-toolbar>      
+      <iron-icon icon="editor:insert-comment"></iron-icon>
+      <span class="title" title></span>
+      <iron-icon icon="perm-identity"></iron-icon>
+    </paper-toolbar>
+    <div id="topContent">
+      <paper-input id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></paper-input>
+      <paper-input id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></paper-input>
+    </div>
   </template>
   <script>
     Polymer({
