@@ -71,7 +71,7 @@
         computed: "getDecksPath(theDeck)"
       }, 
       cards:{
-        computed: "objectToArray(theDeck.cards)"
+        computed: "objectToArray(theDeck.cards,persistedData,persistedData.*)"
       }
     },
     close: function() {
