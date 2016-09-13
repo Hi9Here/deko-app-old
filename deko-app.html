@@ -77,7 +77,8 @@
         computed: "objectToArray(theDeck.cards,persistedData,persistedData.*)"
       }
     },
-    close: function() {
+    close: function(event) {
+      console.log(event)
       this.$.editDialogDeck.close()
       this.$.editDialogCard.close()
     },
