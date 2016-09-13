@@ -23,7 +23,7 @@
       </template>
       <template is="dom-if" if="{{routeData.deck}}" restamp>
         <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
-          <da-deck id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-deck>
+          <da-card id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-card>
         </template>
       </template>
     </div>
