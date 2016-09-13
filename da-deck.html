@@ -72,22 +72,16 @@
       #bottomToolbar .title {
         text-align: center;
       }
-      .placeholder {
-        width: 100%;
-        text-align:center;
-        font-weight: 300;
-      }
-
     </style>
-    
+    <div id=background ></div>
         <paper-toolbar>      
           <iron-icon icon="question-answer"></iron-icon>
           <span class="title" title></span>
           <iron-icon icon="perm-identity"></iron-icon>
         </paper-toolbar>
         <div id="topContent">
-          <paper-input id="title" class$="[[emptyClass(title, editable)]]" contenteditable$="[[editable]]"></paper-input>
-          <paper-input id="body" class$="[[emptyClass(body, editable)]]" contenteditable$="[[editable]]"></paper-input>
+          <h1>{{title}}</h1>
+          <p>{{body}}</p>
         </div>
         <div id="bottomContent">
           <iron-icon icon="question-answer"></iron-icon>
@@ -95,63 +89,10 @@
         <paper-toolbar id="bottomToolbar">
           <div class="title">Q & A</div>
         </paper-toolbar>
-
   </template>
   <script>
     Polymer({
-      is: 'da-deck',
-      properties: {
-        editable: {
-          type: Boolean,
-          reflectToAttribute: true,
-          value: false
-        },
-        title: {
-          type: String,
-          notify: true,
-          value: ''
-        },
-        body: {
-          type: String,
-          notify: true,
-          value: ''
-        },
-        lastUpdated: {
-          type: Number,
-          value: 0
-        }
-      },
-      listeners: {
-        input: 'onInput'
-      },
-      observers: [
-        'updateTextContent(title, body)'
-      ],
-      emptyClass(content, editable) {
-        if (editable) {
-          return !content ? 'placeholder' : '';
-        } else {
-          return !content ? 'hidden' : '';
-        }
-      },
-      propertiesAreEmpty() {
-        for (var i = 0; i < arguments.length; ++i) {
-          if (arguments[i]) {
-            return false;
-          }
-        }
-        return true;
-      },
-      updateTextContent(title, body) {
-        this.$.title.textContent = title;
-        this.$.body.textContent = body;
-      },
-      onInput() {
-        this.async(function() {
-          this.title = this.$.title.innerText;
-          this.body = this.$.body.innerText;
-        });
-      }
+      is: 'da-deck'
     })
   </script>
 </dom-module>
