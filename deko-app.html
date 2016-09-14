@@ -5,6 +5,8 @@
 <link rel="import" href="../paper-header-panel/paper-header-panel.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/image-icons.html">
 <link rel="import" href="../app-route/app-route.html">
 <link rel="import" href="../app-route/app-location.html">
 <link rel="import" href="../fab-menu/fab-menu.html">
@@ -21,9 +23,18 @@
       <!-- Drawer Stuff -->
       <paper-header-panel drawer>
         <paper-toolbar>
-          <div>Menu</div>
+          <div id="menuTitle">Menu</div>
         </paper-toolbar>
-        <div> Drawer content... </div>
+        <h1>Legends</h1>    
+          <div class="menuItems"><iron-icon icon="perm-identity"></iron-icon><h2>Owner</h2></div>
+          <div class="menuItems"><iron-icon icon="content-copy"></iron-icon><h2>Deck</h2></div>
+          <div class="menuItems"><iron-icon icon="image:crop-portrait"></iron-icon><h2>Card</h2></div>       
+        <hr></hr>     
+          <div class="menuItems"><iron-icon icon="question-answer"></iron-icon><h2>Q&A</h2></div>
+          <div class="menuItems"><iron-icon icon="bookmark"></iron-icon><h2>Websites</h2></div>
+          <div class="menuItems"><iron-icon icon="event"></iron-icon><h2>Event</h2></div>
+          <div class="menuItems"><iron-icon icon="shopping-cart"></iron-icon><h2>Shopping</h2></div>
+          <div class="menuItems"><iron-icon icon="star"></iron-icon><h2>Reviews</h2></div>       
       </paper-header-panel>
       <!-- Main Section -->
       <paper-header-panel main>
