@@ -23,9 +23,8 @@
       <!-- Drawer Stuff -->
       <paper-header-panel drawer>
         <paper-toolbar>
-          <div id="menuTitle">Menu</div>
+          <div id="menuTitle">Legend</div>
         </paper-toolbar>
-        <h1>Legend</h1>    
           <div class="menuItems"><iron-icon icon="perm-identity"></iron-icon><h2>Owner</h2></div>
           <div class="menuItems"><iron-icon icon="content-copy"></iron-icon><h2>Deck</h2></div>
           <div class="menuItems"><iron-icon icon="image:crop-portrait"></iron-icon><h2>Card</h2></div>       
@@ -37,11 +36,11 @@
           <div class="menuItems"><iron-icon icon="star"></iron-icon><h2>Reviews</h2></div>       
       </paper-header-panel>
       <!-- Main Section -->
-      <paper-header-panel main>
+      <paper-header-panel main class="flex" style="text-align: center;">
         <paper-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut">
-          <paper-icon-button icon="menu" paper-drawer-toggle>
-          <h1>Deko</h1>
-          </paper-icon-button><a href=\ ><paper-button> < </paper-button></a> [[theDeck.title]]
+          <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+          <div class="title">Deko</div>
+          <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
         </paper-toolbar>
           <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
           <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
@@ -63,7 +62,7 @@
             <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
           </template>
           <template is="dom-if" if="{{editMode}}">
-            <paper-toolbar style="bottom: 12px;width: 100vw;position: absolute;"><h1>Tap to edit</h1><paper-button style="right:0;position: absolute;" on-tap="done">Done</paper-button></paper-toolbar>
+            <paper-toolbar style="bottom: 12px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
           </template>
           <paper-dialog id="editDialogDeck">
             <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>

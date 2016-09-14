@@ -3,7 +3,10 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-material/paper-material.html">
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
 
 <dom-module id="da-deck">
   <template>
@@ -15,7 +18,7 @@
         @apply(--paper-font-common-base);
         box-shadow:0 14px 26px 0 rgba(0, 0, 0, 0.5), 0 1px 5px 0 rgba(0, 0, 0, .5), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         width: 250px;
-        height: 350px;
+        height: 348px;
         display: inline-block;
         margin-top: 15px;
         margin: 5px;
@@ -42,11 +45,6 @@
       }
       paper-toolbar {
         width: 250px;
-      }
-      #bottomToolbar {
-        position: absolute;
-        bottom: 21px;
-        text-align: center;
       }
       #topContent {
         height: 60px;
@@ -76,6 +74,9 @@
       iron-icon {
         margin-right: 5px;
       }
+      paper-fab.share {
+       background: none;
+      }
     </style>
     <div id=background ></div>
       <paper-toolbar>      
@@ -93,6 +94,7 @@
       </div>
       <paper-toolbar id="bottomToolbar">
         <div class="title">Q & A</div>
+       <paper-fab mini class="share" icon="social:share" elevation="0"></paper-fab>
       </paper-toolbar>
   </template>
   <script>
