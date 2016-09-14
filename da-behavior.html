@@ -18,8 +18,7 @@
     },
     editDeck: function(event) {
       if (this.isEditable) {
-        var deckElement = Polymer.dom(event).localTarget
-        this.savePath = this.toEditableId(deckElement.id)
+        this.savePath = this.toEditableId(Polymer.dom(event).localTarget.id)
       }
     },
     create: function() {
