@@ -65,10 +65,10 @@
           <paper-toolbar style="bottom: 0px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
         </template>
         <paper-dialog id="editDialogDeck">
-          <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
+          <da-editor-deck id="editor" deck="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
         </paper-dialog>
         <paper-dialog id="editDialogCard">
-          <da-editor-card id="editor" card="{{editableCard}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
+          <da-editor-card id="editor" card="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
         </paper-dialog>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
