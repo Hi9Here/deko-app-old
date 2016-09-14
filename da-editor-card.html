@@ -2,13 +2,34 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
+
+<style>
+  #cardInputs {
+    margin: 15px;
+  }
+  .templateButtons {
+    text-align: center;
+    margin-top: 40px;
+  }
+  paper-input.bigfont {
+    font-size: 30px;
+  }
+  paper-icon-button.big {
+    width: 48px;
+    height: 48px;
+  }
+</style>
+
 <dom-module id="da-editor-card">
+
   <template>
-    <paper-input value="{{card.title}}"></paper-input>
-    <paper-input value="{{card.body}}"></paper-input>
-    <div class="buttons">
-      <paper-button on-tap="delete">Delete</paper-button>
-      <paper-button on-tap="save">Done</paper-button>
+    <div id="cardInputs">
+      <paper-textarea label="Question" value="{{card.title}}" char-counter maxlength="140"></paper-textarea>
+    </div>
+    <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
+      <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
+      <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Done</paper-button>
     </div>
   </template>
   <script>
