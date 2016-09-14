@@ -62,7 +62,7 @@
             <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
           </template>
           <template is="dom-if" if="{{editMode}}">
-            <paper-toolbar style="bottom: 12px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
+            <paper-toolbar style="bottom: 0px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
           </template>
           <paper-dialog id="editDialogDeck">
             <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
