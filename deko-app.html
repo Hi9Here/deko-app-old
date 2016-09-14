@@ -72,7 +72,7 @@
         </paper-dialog>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
-        <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editableDeck}}"></firebase-document> 
+        <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editing}}"></firebase-document> 
       </paper-header-panel>
     </paper-drawer-panel>
   </template>
