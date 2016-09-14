@@ -49,7 +49,7 @@
         <div class="decks">
           <template is="dom-if" if="{{!routeData.deck}}" restamp>
             <template is="dom-repeat" items="[[persistedData]]" as="deck">
-              <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tapped"></da-deck>
+              <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tappedDeck"></da-deck>
             </template>
           </template>
           <template is="dom-if" if="{{routeData.deck}}" restamp>
@@ -91,7 +91,6 @@
         ],
         type: Array
       },
-       
       editMode:{
         type:Boolean,
         value:false,
@@ -140,9 +139,9 @@
         console.log(cardElement)
       }
     },
-    tapped: function(e,d){
+    tappedDeck: function(e,d){
       if (this.editMode) {
-        this.edit(e,d)
+        this.editDeck(e,d)
         this.$.editDialogDeck.open()
       } else {
         var deckElement = Polymer.dom(e).localTarget
