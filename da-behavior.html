@@ -53,7 +53,7 @@
       }
     },
     save: function() {
-      if (this.$.document.isNew && (this.editableDeck.title || this.editableDeck.body)) {
+      if (this.$.document.isNew && (this.editing.title || this.editing.body)) {
         return this.$.document.save(this.decksPath).then(() => {
           this.$.document.reset()
         })
