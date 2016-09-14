@@ -13,8 +13,7 @@
     },
     editCard: function(event) {
       if (this.isEditable) {
-        var cardElement = Polymer.dom(event).localTarget
-        this.savePath = this.toEditableId(cardElement.id)
+        this.savePath = this.toEditableId(Polymer.dom(event).localTarget.id)
       }
     },
     editDeck: function(event) {
