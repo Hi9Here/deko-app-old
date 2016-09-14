@@ -17,7 +17,7 @@
         this.savePath = this.toEditableId(cardElement.id)
       }
     },
-    edit: function(event) {
+    editDeck: function(event) {
       if (this.isEditable) {
         var deckElement = Polymer.dom(event).localTarget
         this.savePath = this.toEditableId(deckElement.id)
