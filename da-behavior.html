@@ -1,6 +1,5 @@
 <link rel="import" href="../app-storage/app-network-status-behavior.html">
 <script>
-
   Polymer.DekoAppBehaviorImpl = {
     properties: {
       savePath: {
@@ -54,9 +53,15 @@
     },
     save: function() {
       if (this.$.document.isNew && (this.editing.title || this.editing.body)) {
-        return this.$.document.save(this.decksPath).then(() => {
-          this.$.document.reset()
-        })
+        if (this.decksPath) {
+          return this.$.document.save(this.decksPath).then(() => {
+            this.$.document.reset()
+          })
+        } else {
+          return this.$.document.save("/deck").then(() => {
+            this.$.document.reset()
+          })
+        }
       }
       var cards
       if (cards = this.$$("template.cards")) {
