@@ -25,15 +25,15 @@
         <paper-toolbar>
           <div id="menuTitle">Legend</div>
         </paper-toolbar>
-          <div class="menuItems"><iron-icon icon="perm-identity"></iron-icon><h2>Owner</h2></div>
-          <div class="menuItems"><iron-icon icon="content-copy"></iron-icon><h2>Deck</h2></div>
-          <div class="menuItems"><iron-icon icon="image:crop-portrait"></iron-icon><h2>Card</h2></div>       
-        <hr></hr>     
-          <div class="menuItems"><iron-icon icon="question-answer"></iron-icon><h2>Q&A</h2></div>
-          <div class="menuItems"><iron-icon icon="bookmark"></iron-icon><h2>Websites</h2></div>
-          <div class="menuItems"><iron-icon icon="event"></iron-icon><h2>Event</h2></div>
-          <div class="menuItems"><iron-icon icon="shopping-cart"></iron-icon><h2>Shopping</h2></div>
-          <div class="menuItems"><iron-icon icon="star"></iron-icon><h2>Reviews</h2></div>       
+        <div class="menuItems"><iron-icon icon="perm-identity"></iron-icon><h2>Owner</h2></div>
+        <div class="menuItems"><iron-icon icon="content-copy"></iron-icon><h2>Deck</h2></div>
+        <div class="menuItems"><iron-icon icon="image:crop-portrait"></iron-icon><h2>Card</h2></div>       
+        <hr />     
+        <div class="menuItems"><iron-icon icon="question-answer"></iron-icon><h2>Q&A</h2></div>
+        <div class="menuItems"><iron-icon icon="bookmark"></iron-icon><h2>Websites</h2></div>
+        <div class="menuItems"><iron-icon icon="event"></iron-icon><h2>Event</h2></div>
+        <div class="menuItems"><iron-icon icon="shopping-cart"></iron-icon><h2>Shopping</h2></div>
+        <div class="menuItems"><iron-icon icon="star"></iron-icon><h2>Reviews</h2></div>       
       </paper-header-panel>
       <!-- Main Section -->
       <paper-header-panel main class="flex" style="text-align: center;">
@@ -42,40 +42,39 @@
           <div class="title">Deko</div>
           <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
         </paper-toolbar>
-          <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
-          <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
-          <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
-          <app-indexeddb-mirror session="[[user.uid]]" key="decks" data="{{data}}" persisted-data="{{persistedData}}"></app-indexeddb-mirror>
-          <div class="decks">
-            <template is="dom-if" if="{{!routeData.deck}}" restamp>
-              <template is="dom-repeat" items="[[persistedData]]" as="deck">
-                <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tapped"></da-deck>
-              </template>
+        <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
+        <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
+        <firebase-query id="query" app-name="decks" path="/decks" data="{{data}}"></firebase-query>
+        <app-indexeddb-mirror session="[[user.uid]]" key="decks" data="{{data}}" persisted-data="{{persistedData}}"></app-indexeddb-mirror>
+        <div class="decks">
+          <template is="dom-if" if="{{!routeData.deck}}" restamp>
+            <template is="dom-repeat" items="[[persistedData]]" as="deck">
+              <da-deck id$="[[deck.$key]]" title="[[deck.title]]" body="[[deck.body]]" on-tap="tappedDeck"></da-deck>
             </template>
-            <template is="dom-if" if="{{routeData.deck}}" restamp>
-              <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
-                <da-card id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-card>
-              </template>
+          </template>
+          <template is="dom-if" if="{{routeData.deck}}" restamp>
+            <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
+              <da-card id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-card>
             </template>
-          </div>
-          <template is="dom-if" if="{{!editMode}}">
-            <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
           </template>
-          <template is="dom-if" if="{{editMode}}">
-            <paper-toolbar style="bottom: 0px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
-          </template>
-          <paper-dialog id="editDialogDeck">
-            <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
-          </paper-dialog>
-          <paper-dialog id="editDialogCard">
-            <da-editor-card id="editor" card="{{editableCard}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
-          </paper-dialog>
-          <app-location route="{{route}}"></app-location>
-          <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
-          <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editableDeck}}"></firebase-document> 
+        </div>
+        <template is="dom-if" if="{{!editMode}}">
+          <fab-menu disabled="[[!online]]" label="Add / Edit" on-delete="fabDelete" on-add="create" on-edit="fabEdit" icon="touch-app" back-label="Cancel" back-icon="subdirectory-arrow-left" menu="{{menu}}"></fab-menu>
+        </template>
+        <template is="dom-if" if="{{editMode}}">
+          <paper-toolbar style="bottom: 0px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
+        </template>
+        <paper-dialog id="editDialogDeck">
+          <da-editor-deck id="editor" deck="{{editableDeck}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
+        </paper-dialog>
+        <paper-dialog id="editDialogCard">
+          <da-editor-card id="editor" card="{{editableCard}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
+        </paper-dialog>
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
+        <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editableDeck}}"></firebase-document> 
       </paper-header-panel>
     </paper-drawer-panel>
-
   </template>
 </dom-module>
 <script>
@@ -92,7 +91,6 @@
         ],
         type: Array
       },
-       
       editMode:{
         type:Boolean,
         value:false,
@@ -141,9 +139,9 @@
         console.log(cardElement)
       }
     },
-    tapped: function(e,d){
+    tappedDeck: function(e,d){
       if (this.editMode) {
-        this.edit(e,d)
+        this.editDeck(e,d)
         this.$.editDialogDeck.open()
       } else {
         var deckElement = Polymer.dom(e).localTarget
