@@ -49,7 +49,7 @@
         text-align: left;
       }
       paper-toolbar {
-        width: 250px;
+        width: 100%;
       }
       #bottomToolbar {
         position: absolute;
@@ -104,6 +104,17 @@
         bottom: 10px;
         right: 20px;
       }
+      /* #### Mobile Phones Portrait #### */
+      @media screen and (max-device-width: 480px) and (orientation: portrait){
+        /* some CSS here */
+        paper-material {
+          width: 275px;
+          height: 400px;
+        }
+
+      }
+
+
     </style>
     
     <paper-material elevation="2">

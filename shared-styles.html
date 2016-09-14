@@ -11,7 +11,6 @@
         background-color: #e8e8e8;
         height: 100vh;
         @apply(--paper-font-common-base);
-        --paper-fab-background: var(--paper-teal-500);
       }
       .decks {
         position: relative;
@@ -21,11 +20,6 @@
         overflow: auto;
         display: block;
         text-align: center;
-      }
-      paper-fab {
-        position: absolute;
-        bottom: 1em;
-        right: 1em;
       }
       paper-dialog {
         width: 300px;
@@ -59,6 +53,15 @@
       }
       paper-icon-button {
         color: #fff;
+      }
+       /* #### Mobile Phones Portrait #### */
+      @media screen and (max-device-width: 480px) and (orientation: portrait){
+        /* some CSS here */
+        paper-fab {
+          bottom: 0;
+          right: 0;
+        }
+
       }
 
     </style>
