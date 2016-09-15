@@ -113,7 +113,7 @@
         computed: "getDecksPath(theDeck,   persistedData.*)"
       }, 
       cards:{
-        computed: "getCard(theDeck.*,    persistedData,persistedData.*)"
+        computed: "getCards(theDeck.*,    persistedData,persistedData.*)"
       }
     },
     close: function(event) {
@@ -190,7 +190,7 @@
     },
     getCards: function(theDeck) {
       if (theDeck.value.hasOwnProperty("cards")) {
-        return theDeck.value.cards
+        return this.objectToArray(theDeck.value.cards)
       } else {
         return []
       }
