@@ -28,7 +28,9 @@
         <paper-textarea label="Question" value="{{card.title}}" char-counter maxlength="140"></paper-textarea>
       </template>
       <template is="dom-if" if="[[card.title]]">
-        <p>[[card.title]]</p>
+        <template is="dom-if" if="[[card.body]]">
+          <p>[[card.title]]</p>
+        </template>
         <paper-textarea label="Answer" value="{{card.body}}" char-counter maxlength="140"></paper-textarea>
       </template>
     </div>
