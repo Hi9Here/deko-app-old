@@ -1,6 +1,5 @@
 <link rel="import" href="../app-storage/app-network-status-behavior.html">
 <script>
-
   Polymer.DekoAppBehaviorImpl = {
     properties: {
       savePath: {
@@ -13,13 +12,14 @@
     },
     editCard: function(event) {
       if (this.isEditable) {
+        // this.editing = Polymer.dom(event).localTarget
         this.savePath = this.toEditableId(Polymer.dom(event).localTarget.id)
       }
     },
     editDeck: function(event) {
       if (this.isEditable) {
-        var deckElement = Polymer.dom(event).localTarget
-        this.savePath = this.toEditableId(deckElement.id)
+        // this.editing = Polymer.dom(event).localTarget
+        this.savePath = this.toEditableId(Polymer.dom(event).localTarget.id)
       }
     },
     create: function() {
@@ -52,10 +52,16 @@
       }
     },
     save: function() {
-      if (this.$.document.isNew && (this.editableDeck.title || this.editableDeck.body)) {
-        return this.$.document.save(this.decksPath).then(() => {
-          this.$.document.reset()
-        })
+      if (this.$.document.isNew && (this.editing.title || this.editing.body)) {
+        if (this.decksPath) {
+          return this.$.document.save(this.decksPath).then(() => {
+            this.$.document.reset()
+          })
+        } else {
+          return this.$.document.save("/deck").then(() => {
+            this.$.document.reset()
+          })
+        }
       }
       var cards
       if (cards = this.$$("template.cards")) {
