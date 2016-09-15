@@ -25,7 +25,7 @@
     create: function() {
       if (this.isEditable) {
         this.savePath = null
-        this.editing = {title:"",body:"", user:this.user}
+        this.editing = {title:"",body:"", userName:this.user.displayName}
         if (this.theDeck && this.theDeck["$key"]) {
           this.$.editDialogCard.open()
         } else {
