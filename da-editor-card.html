@@ -29,7 +29,7 @@
       </template>
       <template is="dom-if" if="[[card.title]]">
         <template is="dom-if" if="[[card.body]]">
-          <p>[[card.title]]</p>
+          <p>{{card.title}}</p>
         </template>
         <paper-textarea label="Answer" value="{{card.body}}" char-counter maxlength="140"></paper-textarea>
       </template>
