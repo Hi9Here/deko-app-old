@@ -3,6 +3,15 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="da-editor-deck">
+  <template>
+      <style is="custom-style">
+    --toggle-icon: {
+      color: var(--paper-green-500);
+    };
+    --toggle-icon-active: {
+      color: var(--paper-red-500);
+    };
+  </style>
   <style>
     #deckInputs {
       margin: 15px;
@@ -22,15 +31,6 @@
       color: blue;
     }
   </style>
-  <style is="custom-style">
-    --toggle-icon: {
-      color: var(--paper-green-500);
-    };
-    --toggle-icon-active: {
-      color: var(--paper-red-500);
-    };
-  </style>
-  <template>
     <div id="deckInputs">
       <paper-input label="Deck Title" value="{{deck.title}}" char-counter maxlength="15"></paper-input>
       <paper-input label="Deck Sub Title" value="{{deck.body}}" char-counter maxlength="30"></paper-input>
