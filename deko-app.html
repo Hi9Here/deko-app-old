@@ -103,29 +103,29 @@
         computed: "getIsEditable(online)"
       },
       decksPath: {
-        computed: "getDecksPath(theDeck)"
+        computed: "getDecksPath(theDeck,   persistedData.*)"
       }, 
       cards:{
-        computed: "objectToArray(theDeck.cards,persistedData,persistedData.*)"
+        computed: "objectToArray(theDeck.cards,    persistedData,persistedData.*)"
       }
     },
     close: function(event) {
-      var changeCommits;
+      var changeCommits
       switch (event.detail) {
         case 'save':
           changeCommits = this.save();
-          break;
+          break
         case 'delete':
           changeCommits = this.delete();
-          break;
+          break
         default:
           changeCommits = Promise.resolve();
-          break;
+          break
       }
       if (this.$.query && this.$.query.refresh) {
         changeCommits.then(() => {
-          this.$.query.refresh();
-        });
+          this.$.query.refresh()
+        })
       }
       this.$.editDialogDeck.close()
       this.$.editDialogCard.close()
