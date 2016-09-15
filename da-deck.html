@@ -44,11 +44,11 @@
         text-align: left;
       }
       paper-toolbar {
-        width: 250px;
+        width: 100%;
       }
       #topContent {
-        height: 60px;
-        padding: 10px;
+        height: 50px;
+        padding: 20px 10px 10px 10px;
         text-align: center;
       }
       #bottomContent {
@@ -60,7 +60,7 @@
         height: 120px;
         width: 120px;
       }
-      #bottomToolbar .title {
+      .bottomToolbar .title {
         text-align: center;
       }
       h1 {
@@ -74,9 +74,93 @@
       iron-icon {
         margin-right: 5px;
       }
-      paper-fab.share {
-       background: none;
+      
+       /* iPhone 5 Portrait */
+      @media only screen 
+        and (min-device-width: 320px) 
+        and (max-device-width: 568px)
+        and (-webkit-min-device-pixel-ratio: 2)
+        and (orientation: portrait) {
+          :host {
+            width: 280px;
+            height: 400px;
+        }
+          #topContent {
+            height: 94px;
+            padding: 10px 10px 10px 10px;
+            text-align: center;
+        }
+          #bottomContent {
+            height: 154px;
+            padding: 10px;
+            text-align: center;
+        }
       }
+      /* iPhone 6 Portrait */
+      @media only screen 
+        and (min-device-width: 375px) 
+        and (max-device-width: 667px) 
+        and (-webkit-min-device-pixel-ratio: 2)
+        and (orientation: portrait) { 
+          :host {
+            width: 330px;
+            height: 460px;
+        }
+         #topContent {
+            height: 124px;
+            padding: 10px;
+            text-align: center;
+        }
+          #bottomContent {
+            height: 184px;
+            padding: 10px;
+            text-align: center;
+        }
+      }
+      /* iPhone 6+ Portrait */
+      @media only screen 
+        and (min-device-width: 414px) 
+        and (max-device-width: 736px) 
+        and (-webkit-min-device-pixel-ratio: 3)
+        and (orientation: portrait) { 
+           :host {
+            width: 370px;
+            height: 500px;
+        }
+        #topContent {
+            height: 144px;
+            padding: 10px;
+            text-align: center;
+        }
+          #bottomContent {
+            height: 204px;
+            padding: 10px;
+            text-align: center;
+        }
+      }
+      /* S5 Portrait */
+      @media screen 
+        and (device-width: 360px) 
+        and (device-height: 640px) 
+        and (-webkit-device-pixel-ratio: 3) 
+        and (orientation: portrait) {
+          :host {
+            width: 320px;
+            height: 420px;
+        }
+        #topContent {
+            height: 104px;
+            padding: 10px;
+            text-align: center;
+        }
+          #bottomContent {
+            height: 164px;
+            padding: 10px;
+            text-align: center;
+        }
+      }
+
+
     </style>
     <div id=background ></div>
       <paper-toolbar>      
@@ -92,9 +176,8 @@
       <div id="bottomContent">
         <iron-icon icon="question-answer"></iron-icon>
       </div>
-      <paper-toolbar id="bottomToolbar">
+      <paper-toolbar class="bottomToolbar">
         <div class="title">Q & A</div>
-       <paper-fab mini class="share" icon="social:share" elevation="0"></paper-fab>
       </paper-toolbar>
   </template>
   <script>
