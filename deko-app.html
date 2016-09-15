@@ -135,8 +135,11 @@
         this.editCard(e,d)
         this.$.editDialogCard.open()
       } else {
-        var cardElement = Polymer.dom(e).localTarget;
-        console.log(cardElement)
+        this.editCard(e,d)
+        this.$.editDialogCard.open()
+        
+        // var cardElement = Polymer.dom(e).localTarget;
+        // console.log(cardElement)
       }
     },
     tappedDeck: function(e,d){
