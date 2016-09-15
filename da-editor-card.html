@@ -24,7 +24,7 @@
 <dom-module id="da-editor-card">
   <template>
     <div id="cardInputs">
-      <template is="dom-if" if="![[card.body]]">
+      <template is="dom-if" if="[[!card.body]]">
         <paper-textarea label="Question" value="{{card.title}}" char-counter maxlength="140"></paper-textarea>
       </template>
       <template is="dom-if" if="[[card.title]]">
