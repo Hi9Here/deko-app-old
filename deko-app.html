@@ -97,7 +97,7 @@
       },
       theDeck:{
         type:Object,
-        computed: "getTheDeck(routeData.deck,persistedData,persistedData.*)"
+        computed: "getTheDeck(routeData.*,persistedData,persistedData.*)"
       },
       isEditable:{
         computed: "getIsEditable(online)"
@@ -179,7 +179,7 @@
       this.$.auth.signInWithPopup()
     },
     getTheDeck: function(k,a) {
-      console.log(k,a)
+      console.log(k,a , "here")
       function isTheOne(deck) {
         return deck["$key"] === k;
       }
@@ -190,6 +190,8 @@
           cards.render()
         }
         return thedesks[0]
+      } else {
+        return {}
       }
     }
   })
