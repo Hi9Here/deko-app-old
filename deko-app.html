@@ -77,6 +77,7 @@
         <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editing}}"></firebase-document> 
       </paper-header-panel>
     </paper-drawer-panel>
+    <image-base64 url="{{user.photoURL}}" width="48" base64="{{userPic}}" ></image-base64>
   </template>
 </dom-module>
 <script>
