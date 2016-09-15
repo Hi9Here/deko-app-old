@@ -57,7 +57,7 @@
           </template>
           <template is="dom-if" if="{{routeData.deck}}" restamp>
             <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
-              <da-card id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-card>
+              <da-card id$="[[card.$key]]" card="[[card]]" on-tap="tappedCard"></da-card>
             </template>
           </template>
         </div>
