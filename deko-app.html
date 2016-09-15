@@ -181,7 +181,7 @@
     getTheDeck: function(k,a) {
       console.log(k,a , "here")
       function isTheOne(deck) {
-        return deck["$key"] === k;
+        return deck["$key"] === k.value.deck
       }
       var thedesks = a.filter(isTheOne)
       if (thedesks.length > 0 ) {
