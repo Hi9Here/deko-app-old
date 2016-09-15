@@ -40,7 +40,7 @@
       <paper-header-panel main class="flex" style="text-align: center;">
         <paper-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut">
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-          <template is="dom-if" if="[[routeData.deck]]" restamp>
+          <template is="dom-if" if="[[!routeData.deck]]" restamp>
             <div class="title">Deko</div>
           </template>
           <template is="dom-if" if="[[routeData.deck]]" restamp>
