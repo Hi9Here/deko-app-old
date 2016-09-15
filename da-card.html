@@ -162,9 +162,11 @@
       </paper-toolbar>
       <div id="topContent">
         <h1>[[title]]</h1>
-        <p>[[body]]</p>
+        <h2>[[body]]</h2>
       </div>
-      <paper-fab mini class="answered" icon="check"></paper-fab>
+      <template is="dom-if" if="{{body}}">
+        <paper-fab mini class="answered" icon="check"></paper-fab>
+      </template>
       <paper-fab mini class="share" icon="social:share"></paper-fab>
     </paper-material>
     
