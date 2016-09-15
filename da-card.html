@@ -92,15 +92,11 @@
         margin: 0;
         color: #333;
       }
-      paper-fab {
-        position: absolute;
-      }
-      paper-fab.answered:active {
+      iron-icon.answered:active {
         background: grey;
       }
-      paper-fab.answered {
-        bottom: 10px;
-        left: 20px;
+      iron-icon {
+        margin: 5px;
       }
       
 
@@ -155,6 +151,9 @@
     <paper-material elevation="2">
       <paper-toolbar>      
         <iron-icon icon="question-answer"></iron-icon>
+          <template is="dom-if" if="{{body}}">       
+          <iron-icon icon="check" class="answered"></iron-icon>
+        </template>
         <span class="title" title></span>
         <iron-icon icon="image:crop-portrait"></iron-icon>
         <iron-icon icon="perm-identity"></iron-icon>
@@ -163,9 +162,7 @@
         <h1>[[title]]</h1>
         <h2>[[body]]</h2>
       </div>
-      <template is="dom-if" if="{{body}}">
-        <paper-fab mini class="answered" icon="check"></paper-fab>
-      </template>
+      
 
     </paper-material>
     
