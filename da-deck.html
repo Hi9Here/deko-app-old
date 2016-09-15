@@ -161,25 +161,22 @@
             text-align: center;
         }
       }
-
-
     </style>
-    <div id=background ></div>
-      <paper-toolbar>
-        <iron-icon icon="content-copy"></iron-icon>
-        <span class="title" title></span>
-        <img style="border-radius:45px" src="[[card.userPic]]" title="[[card.userName]]" />
-      </paper-toolbar>
-      <div id="topContent">
-        <h1>{{title}}</h1>
-        <p>{{body}}</p>
-      </div>
-      <div id="bottomContent">
-        <iron-icon icon="question-answer"></iron-icon>
-      </div>
-      <paper-toolbar class="bottomToolbar">
-        <div class="title">Q & A</div>
-      </paper-toolbar>
+    <paper-toolbar>
+      <iron-icon icon="content-copy"></iron-icon>
+      <span class="title" title></span>
+      <img style="border-radius:45px" src="[[deck.userPic]]" title="[[deck.userName]]" />
+    </paper-toolbar>
+    <div id="topContent">
+      <h1>[[deck.title]]</h1>
+      <p>[[deck.body]]</p>
+    </div>
+    <div id="bottomContent">
+      <iron-icon icon="question-answer"></iron-icon>
+    </div>
+    <paper-toolbar class="bottomToolbar">
+      <div class="title">Q & A</div>
+    </paper-toolbar>
   </template>
   <script>
     Polymer({
