@@ -2,37 +2,23 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-input/paper-input.html">
-
-<style>
-  #deckInputs {
-    margin: 15px;
-  }
-  .templateButtons {
-    text-align: center;
-    margin-top: 40px;
-  }
-  paper-input.bigfont {
-    font-size: 30px;
-  }
-  paper-icon-button.big {
-    width: 48px;
-    height: 48px;
-  }
-
-</style>
-
 <dom-module id="da-editor-deck">
   <template>
+    <style>
+      toggle-icon #checked.toggle-icon {
+        color: blue;
+      }
+    </style>
     <div id="deckInputs">
       <paper-input label="Deck Title" value="{{deck.title}}" char-counter maxlength="15"></paper-input>
       <paper-input label="Deck Sub Title" value="{{deck.body}}" char-counter maxlength="30"></paper-input>
     </div>
     <div class="templateButtons">
-      <paper-icon-button class="big" id="qa" icon="question-answer" active="true" on-tap=""></paper-icon-button>
-      <paper-icon-button class="big" id="bookmark" icon="bookmark" on-tap=""></paper-icon-button>
-      <paper-icon-button class="big" id="event" icon="event" on-tap=""></paper-icon-button>
-      <paper-icon-button class="big" id="shopping" icon="shopping-cart" on-tap=""></paper-icon-button>
-      <paper-icon-button class="big" id="review" icon="star" on-tap=""></paper-icon-button>
+      <toggle-icon class="big" id="qa" icon="question-answer" ></toggle-icon>
+      <toggle-icon class="big" id="bookmark" icon="bookmark"></toggle-icon>
+      <toggle-icon class="big" id="event" icon="event"></toggle-icon>
+      <toggle-icon class="big" id="shopping" icon="shopping-cart"></toggle-icon>
+      <toggle-icon class="big" id="review" icon="star"></toggle-icon>
     </div>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>

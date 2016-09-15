@@ -3,6 +3,7 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-input/paper-textarea.html">
+<link rel="import" href="../toggle-icon/toggle-icon.html">
 
 <style>
   #cardInputs {
@@ -22,10 +23,14 @@
 </style>
 
 <dom-module id="da-editor-card">
-
   <template>
     <div id="cardInputs">
-      <paper-textarea label="Question" value="{{card.title}}" char-counter maxlength="140"></paper-textarea>
+      <template is="dom-if" if="[[!card.body]]">
+        <paper-textarea label="Question" value="{{card.title}}" char-counter maxlength="140"></paper-textarea>
+      </template>
+      <template is="dom-if" if="[[card.title]]">
+        <paper-textarea label="Answer" value="{{card.body}}" char-counter maxlength="140"></paper-textarea>
+      </template>
     </div>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>

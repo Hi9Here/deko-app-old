@@ -64,10 +64,10 @@
         <template is="dom-if" if="{{editMode}}">
           <paper-toolbar style="bottom: 0px;position: absolute; width: 100%; z-index: 1000;"><div class="title">Tap to Edit</div><paper-button raised on-tap="done">Done</paper-button></paper-toolbar>
         </template>
-        <paper-dialog id="editDialogDeck">
+        <paper-dialog id="editDialogDeck" modal>
           <da-editor-deck id="editor" deck="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
         </paper-dialog>
-        <paper-dialog id="editDialogCard">
+        <paper-dialog id="editDialogCard" modal>
           <da-editor-card id="editor" card="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
         </paper-dialog>
         <app-location route="{{route}}"></app-location>
@@ -135,8 +135,11 @@
         this.editCard(e,d)
         this.$.editDialogCard.open()
       } else {
-        var cardElement = Polymer.dom(e).localTarget;
-        console.log(cardElement)
+        this.editCard(e,d)
+        this.$.editDialogCard.open()
+        
+        // var cardElement = Polymer.dom(e).localTarget;
+        // console.log(cardElement)
       }
     },
     tappedDeck: function(e,d){
