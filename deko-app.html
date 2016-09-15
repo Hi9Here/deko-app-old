@@ -38,13 +38,13 @@
       </paper-header-panel>
       <!-- Main Section -->
       <paper-header-panel main class="flex" style="text-align: center;">
-        <paper-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut">
+        <paper-toolbar>
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
           <template is="dom-if" if="[[!routeData.deck]]" restamp>
             <div class="title">Deko</div>
           </template>
           <template is="dom-if" if="[[routeData.deck]]" restamp>
-            <div class="title">[[theDeck.title]]<small>[[theDeck.body]]</small></div>
+            <div class="title">[[theDeck.title]] <small> [[theDeck.body]]</small></div>
             <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
           </template>
         </paper-toolbar>
