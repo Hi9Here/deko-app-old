@@ -40,7 +40,9 @@
         <paper-toolbar signed-in="[[signedIn]]"  on-sign-out="signOut">
           <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
           <div class="title">Deko</div>
-          <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
+          <template is="dom-if" if="[[!routeData.deck]]" restamp>
+            <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
+          </template>
         </paper-toolbar>
         <da-login on-sign-in="signIn" signed-in="[[signedIn]]" disabled="[[!online]]"></da-login>
         <firebase-auth id="auth" app-name="decks" provider="google" signed-in="{{signedIn}}" user="{{user}}"></firebase-auth>
