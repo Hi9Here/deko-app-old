@@ -14,6 +14,7 @@
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
 <link rel="import" href="../polymerfire/polymerfire.html">
+<link rel="import" href="../image-base64/image-base64.html">
 
 <dom-module id="deko-app">
   <template>
@@ -56,7 +57,7 @@
           </template>
           <template is="dom-if" if="{{routeData.deck}}" restamp>
             <template is="dom-repeat" items="[[cards]]" as="card" class="cards">
-              <da-card id$="[[card.$key]]" title="[[card.title]]" body="[[card.body]]" on-tap="tappedCard"></da-card>
+              <da-card id$="[[card.$key]]" card="[[card]]" on-tap="tappedCard"></da-card>
             </template>
           </template>
         </div>
@@ -77,6 +78,7 @@
         <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editing}}"></firebase-document> 
       </paper-header-panel>
     </paper-drawer-panel>
+    <image-base64 url="{{user.photoURL}}" width="48" base64="{{userPic}}" ></image-base64>
   </template>
 </dom-module>
 <script>

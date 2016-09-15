@@ -155,12 +155,12 @@
           <iron-icon icon="check" class="answered"></iron-icon>
         </template>
         <span class="title" title></span>
-        <iron-icon icon="image:crop-portrait"></iron-icon>
+        <img style="border-radius:45px" src="[[card.userPic]]" title="[[card.userName]]" />
         <iron-icon icon="perm-identity"></iron-icon>
       </paper-toolbar>
       <div id="topContent">
-        <h1>[[title]]</h1>
-        <h2>[[body]]</h2>
+        <h1>[[card.title]]</h1>
+        <h2>[[card.body]]</h2>
       </div>
       
 
