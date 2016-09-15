@@ -18,9 +18,17 @@
     width: 48px;
     height: 48px;
   }
-  .templateButtons :checked {
-      color: blue;
+  toggle-icon:checked {
+    color: blue;
   }
+</style>
+<style is="custom-style">
+  --toggle-icon: {
+    color: var(--paper-green-500);
+  };
+  --toggle-icon-active: {
+    color: var(--paper-red-500);
+  };
 </style>
 
 <dom-module id="da-editor-deck">
@@ -30,11 +38,11 @@
       <paper-input label="Deck Sub Title" value="{{deck.body}}" char-counter maxlength="30"></paper-input>
     </div>
     <div class="templateButtons">
-      <toggle-icon class="big" id="qa" icon="question-answer" active="true" on-tap=""></toggle-icon>
-      <toggle-icon class="big" id="bookmark" icon="bookmark" on-tap=""></toggle-icon>
-      <toggle-icon class="big" id="event" icon="event" on-tap=""></toggle-icon>
-      <toggle-icon class="big" id="shopping" icon="shopping-cart" on-tap=""></toggle-icon>
-      <toggle-icon class="big" id="review" icon="star" on-tap=""></toggle-icon>
+      <toggle-icon class="big" id="qa" icon="question-answer" ></toggle-icon>
+      <toggle-icon class="big" id="bookmark" icon="bookmark"></toggle-icon>
+      <toggle-icon class="big" id="event" icon="event"></toggle-icon>
+      <toggle-icon class="big" id="shopping" icon="shopping-cart"></toggle-icon>
+      <toggle-icon class="big" id="review" icon="star"></toggle-icon>
     </div>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
