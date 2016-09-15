@@ -4,6 +4,27 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="da-editor-deck">
   <template>
+    <style>
+      #deckInputs {		
+        margin: 15px;		
+      }		
+      .templateButtons {		
+        text-align: center;		
+        margin-top: 40px;		
+      }		
+      paper-input.bigfont {		
+        font-size: 30px;		
+      }		
+      paper-button .big {		
+        width: 48px;		
+        height: 48px;
+      }
+      paper-button {		
+        width: 50px;		
+        height: 50px;
+      }
+    </style>
+    
     <div id="deckInputs">
       <paper-input label="Deck Title" value="{{deck.title}}" char-counter maxlength="15"></paper-input>
       <paper-input label="Deck Sub Title" value="{{deck.body}}" char-counter maxlength="30"></paper-input>
