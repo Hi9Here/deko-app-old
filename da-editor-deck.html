@@ -4,33 +4,14 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <dom-module id="da-editor-deck">
   <template>
-      <style is="custom-style">
-    --toggle-icon: {
-      color: var(--paper-green-500);
-    };
-    --toggle-icon-active: {
-      color: var(--paper-red-500);
-    };
-  </style>
-  <style>
-    #deckInputs {
-      margin: 15px;
-    }
-    .templateButtons {
-      text-align: center;
-      margin-top: 40px;
-    }
-    paper-input.bigfont {
-      font-size: 30px;
-    }
-    paper-icon-button.big {
-      width: 48px;
-      height: 48px;
-    }
-    toggle-icon:checked {
-      color: blue;
-    }
-  </style>
+    <style is="custom-style">
+      --toggle-icon: {
+        color: var(--paper-green-500);
+      };
+      --toggle-icon-active: {
+        color: var(--paper-red-500);
+      };
+    </style>
     <div id="deckInputs">
       <paper-input label="Deck Title" value="{{deck.title}}" char-counter maxlength="15"></paper-input>
       <paper-input label="Deck Sub Title" value="{{deck.body}}" char-counter maxlength="30"></paper-input>
