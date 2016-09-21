@@ -25,6 +25,13 @@
   <template>
     <div id="cardInputs" inner-h-t-m-l="{{card.input}}">
     </div>
+    <paper-button-group selected="{{useTemplate}}">
+      <paper-button name="qa" active> <iron-icon icon="question-answer"></iron-icon></paper-button>
+      <paper-button name="bookmark">  <iron-icon icon="bookmark">       </iron-icon></paper-button>
+      <paper-button name="event">     <iron-icon icon="event">          </iron-icon></paper-button>
+      <paper-button name="shopping">  <iron-icon icon="shopping-cart">  </iron-icon></paper-button>
+      <paper-button name="booking" >  <iron-icon icon="assignment">     </iron-icon></paper-button>
+    </paper-button-group>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
       <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Done</paper-button>
