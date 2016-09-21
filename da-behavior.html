@@ -42,6 +42,13 @@
       var changeCommits
       switch (event.detail) {
         case 'save':
+          
+          console.log(this.$$("#cardInputs [label]")[0].value)
+          console.log(this.$$("#cardInputs [label]")[0].label)
+          
+          console.log(this.$$("#cardInputs [label]")[1].value)
+          console.log(this.$$("#cardInputs [label]")[1].label)
+          
           changeCommits = this.save()
           break
         case 'delete':
