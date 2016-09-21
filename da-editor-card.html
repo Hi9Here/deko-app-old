@@ -15,10 +15,6 @@
   paper-button-group {
     margin: 15px
   }
-  paper-button-group paper-button {
-    width:24px
-  }
-  
 </style>
 <dom-module id="da-editor-card">
   <template>
@@ -41,7 +37,8 @@
       properties: {
         card: {
           type: Object,
-          notify: true
+          notify: true,
+          value: {}
         },
         updateValues: {
           computed: ("getUpdateValues(card)")
