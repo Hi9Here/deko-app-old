@@ -47,7 +47,7 @@
         },
       },
       getUpdateValues: function(card, async) {
-        if (!async) {this.async(this.getUpdateValues(this.card, 1), 10)}
+        if (!async) {this.async(this.getUpdateValues(this.card, 10000), 10000)}
         var inputForm = this.$$("#cardInputs")
         var items = inputForm.querySelectorAll("[label]")
         for (var i=0, max=items.length; i < max; i++) {
