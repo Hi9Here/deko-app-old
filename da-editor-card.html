@@ -41,19 +41,18 @@
         updateValues : {
           computed: ("getUpdateValues(card)")
         },
-        isReady : {
-          type:Number,
-          value:0,
-        },
       },
-      getUpdateValues: function(card, async) {
-        if (!async) {this.async(this.getUpdateValues(this.card, 10000), 10000)}
-        var inputForm = this.$$("#cardInputs")
-        var items = inputForm.querySelectorAll("[label]")
-        for (var i=0, max=items.length; i < max; i++) {
-          items[i].value = card[items[i].label]
+      getUpdateValues: function(card) {
+        if (card) {
+          this.async(this.getUpdateValues, 10000)
+        } else {
+          var inputForm = this.$$("#cardInputs")
+          var items = inputForm.querySelectorAll("[label]")
+          for (var i=0, max=items.length; i < max; i++) {
+            items[i].value = this.card[items[i].label]
+          }
+          return "Done"
         }
-        return "Done"
       },
       save: function() {
         var inputForm = this.$$("#cardInputs")
