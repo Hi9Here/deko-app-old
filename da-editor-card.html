@@ -65,7 +65,7 @@
             break
           case "bookmark":
             this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>"
-            return this.card.input  = "<paper-textarea label=\"Title\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Url\" char-counter maxlength=\"100\"><\/paper-textarea>"  
+            return this.card.input  = "<paper-input label=\"Title\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
             break
         }
       },
