@@ -39,8 +39,15 @@
           notify: true
         },
         updateValues : {
-          computed: ("getUpdateValues(card)")
-        }
+          computed: ("getUpdateValues(card,isReady)")
+        },
+        isReady : {
+          type:Number,
+          value:0,
+        },
+      },
+      ready: function() {
+        this.async(this.getUpdateValues(this.card), 1)
       },
       getUpdateValues: function(card) {
         var inputForm = this.$$("#cardInputs")
