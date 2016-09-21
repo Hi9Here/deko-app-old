@@ -44,7 +44,7 @@
       },
       getUpdateValues: function(card) {
         if (card) {
-          this.async(this.getUpdateValues, 10000)
+          this.async(this.getUpdateValues, 1000)
         } else {
           var inputForm = this.$$("#cardInputs")
           var items = inputForm.querySelectorAll("[label]")
