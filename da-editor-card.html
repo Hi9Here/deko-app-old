@@ -41,7 +41,7 @@
           value: {}
         },
         inputFrom:{
-          computed: ("getInputFrom(card.input)")
+          computed: ("getInputFrom(theTemplate)")
         },
         updateValues: {
           computed: ("getUpdateValues(card.*)")
@@ -59,12 +59,12 @@
       setTemplate: function(useTemplate) {
         switch(useTemplate) {
           case "qa":
-            this.card.input  = "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>"  
             this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>"
+            return this.card.input  = "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>"  
             break
           case "bookmark":
-            this.card.input  = "<paper-textarea label=\"Title\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Url\" char-counter maxlength=\"100\"><\/paper-textarea>"  
             this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>"
+            return this.card.input  = "<paper-textarea label=\"Title\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Url\" char-counter maxlength=\"100\"><\/paper-textarea>"  
             break
         }
       },
