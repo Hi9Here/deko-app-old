@@ -39,19 +39,6 @@
           notify: true
         }
       },
-      open: function(cardElement) {
-        this.__editedCardElement = cardElement;
-        if (cardElement) {
-          cardElement.style.opacity = 0.1;
-        } else {
-          this.create();
-        }
-      },
-      create: function() {
-        var players = {}
-        players[this.uid] = true
-        this.card = { title: '', body: '', players: players ,input : '<template is=\"dom-if\" if=\"[[!card.body]]\"><paper-textarea label=\"Question\" value=\"{{card.title}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template><template is=\"dom-if\" if=\"[[card.title]]\"><template is=\"dom-if\" if=\"[[card.body]]\"><p>{{card.title}}<\/p><\/template><paper-textarea label=\"Answer\" value=\"{{card.body}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template>', output: "<h1>{{title}}</h1><p>{{body}}</p>"}
-      },
       save: function() {
         this.close('save');
       },
