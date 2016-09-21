@@ -54,6 +54,7 @@
         }
       },
       getInputFrom: function(form) {
+        this.async(this.getUpdateValues, 100) // let it load
         return form
       },
       setTemplate: function(useTemplate) {
