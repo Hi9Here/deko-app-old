@@ -14,6 +14,7 @@
       if (this.isEditable) {
         // this.editing = Polymer.dom(event).localTarget
         this.savePath = this.toEditableId(Polymer.dom(event).localTarget.id)
+        this.editingkey = Polymer.dom(event).localTarget.id
       }
     },
     editDeck: function(event) {
@@ -25,6 +26,7 @@
     create: function() {
       if (this.isEditable) {
         this.savePath = null
+        this.editingkey = null
         if (this.theDeck && this.theDeck["$key"]) {
           this.$.editDialogCard.open()
           var players = {}
@@ -42,7 +44,6 @@
       var changeCommits
       switch (event.detail) {
         case 'save':
-          console.log(this.editing["$key"])
           changeCommits = this.save()
           break
         case 'delete':
@@ -60,8 +61,8 @@
     },
     save: function() {
       if (this.decksPath) {
-        if (this.editing["$key"]) {
-          return this.$.document.save(this.decksPath, this.editing["$key"]).then(() => {
+        if (this.editingkey) {
+          return this.$.document.save(this.decksPath, this.editingkey).then(() => {
             this.$.document.reset()
           })
         } else {
