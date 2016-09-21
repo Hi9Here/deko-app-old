@@ -65,7 +65,7 @@
       }
     },
     save: function() {
-      if (this.$.document.isNew && (this.editing.title || this.editing.body)) {
+      if (this.$.document.isNew) {
         if (this.decksPath) {
           return this.$.document.save(this.decksPath).then(() => {
             this.$.document.reset()
