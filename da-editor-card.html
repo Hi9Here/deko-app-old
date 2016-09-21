@@ -60,17 +60,22 @@
         for (var i=0, max=items.length; i < max; i++) {
           this.card[items[i].label] = items[i].value
         }
-        this.close('save');
+        this.close('save')
       },
       delete: function() {
-        this.close('delete');
+        this.close('delete')
       },
       close: function(detail) {
-        if (this.__editedCardElement) {
-          this.__editedCardElement.style.opacity = 1;
-          this.__editedCardElement = null;
+        var inputForm = this.$$("#cardInputs")
+        var items = inputForm.querySelectorAll("[label]")
+        for (var i=0, max=items.length; i < max; i++) {
+          this.card[items[i].label] = items[i].value
         }
-        this.fire('close', detail, { bubbles: false });
+        if (this.__editedCardElement) {
+          this.__editedCardElement.style.opacity = 1
+          this.__editedCardElement = null
+        }
+        this.fire('close', detail, { bubbles: false })
       }
     })
   </script>
