@@ -32,7 +32,7 @@
       }
       .placeholder:after {
         content: 'Tap to Edit';
-        opacity: 0.5;d
+        opacity: 0.5;
       }
       .hidden {
         display: none;
@@ -153,13 +153,25 @@
 
     </style>
     
-    <paper-material elevation="2" inner-h-t-m-l="[[card.output]]">
+    <paper-material elevation="2" inner-h-t-m-l="[[getHtml(card)]]">
     </paper-material>
     
   </template>
   <script>
     Polymer({
-      is: 'da-card'
+      is: 'da-card',
+      getHtml: function(card) {
+        var output = card.output + ""
+
+        for (var attr in card) {
+          if (attr !== "_data") {
+            //replace {{}}
+            re = new RegExp("{{"+attr+"}}", "gim")
+            output = output.replace(re, card[attr])
+          }
+        }
+        return output
+      }
     })
   </script>
 </dom-module>
