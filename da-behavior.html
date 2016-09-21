@@ -58,16 +58,14 @@
       }
     },
     save: function() {
-      if (this.$.document.isNew) {
-        if (this.decksPath) {
-          return this.$.document.save(this.decksPath).then(() => {
-            this.$.document.reset()
-          })
-        } else {
-          return this.$.document.save("/deck").then(() => {
-            this.$.document.reset()
-          })
-        }
+      if (this.decksPath) {
+        return this.$.document.save(this.decksPath).then(() => {
+          this.$.document.reset()
+        })
+      } else {
+        return this.$.document.save("/deck").then(() => {
+          this.$.document.reset()
+        })
       }
       var cards
       if (cards = this.$$("template.cards")) {
