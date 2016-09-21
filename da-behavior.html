@@ -31,7 +31,7 @@
           if (this.user.uid) {
             players[this.user.uid] = true
           }
-          this.editing = {title: '', body: '', userName:this.user.displayName, userPic: this.userPic, players: players ,input: '<template is=\"dom-if\" if=\"[[!card.body]]\"><paper-textarea label=\"Question\" value=\"{{card.title}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template><template is=\"dom-if\" if=\"[[card.title]]\"><template is=\"dom-if\" if=\"[[card.body]]\"><p>{{card.title}}<\/p><\/template><paper-textarea label=\"Answer\" value=\"{{card.body}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template>', output: "<h1>{{title}}</h1><p>{{body}}</p>"}
+          this.editing = {title: '', body: '', userName:this.user.displayName, userPic: this.userPic, players: players ,input: '<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>', output: "<h1>{{title}}</h1><p>{{body}}</p>"}
         } else {
           this.$.editDialogDeck.open()
           this.editing = {title:"",body:"", userName:this.user.displayName, userPic: this.userPic, type:"Q&A"}
