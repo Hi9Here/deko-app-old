@@ -27,7 +27,11 @@
         this.savePath = null
         if (this.theDeck && this.theDeck["$key"]) {
           this.$.editDialogCard.open()
-          this.editing = {title: '', body: '', players: players ,input: '<template is=\"dom-if\" if=\"[[!card.body]]\"><paper-textarea label=\"Question\" value=\"{{card.title}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template><template is=\"dom-if\" if=\"[[card.title]]\"><template is=\"dom-if\" if=\"[[card.body]]\"><p>{{card.title}}<\/p><\/template><paper-textarea label=\"Answer\" value=\"{{card.body}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template>', output: "<h1>{{title}}</h1><p>{{body}}</p>"}
+          var players = {}
+          if (this.user.uid) {
+            players[this.user.uid] = true
+          }
+          this.editing = {title: '', body: '', userName:this.user.displayName, userPic: this.userPic, players: players ,input: '<template is=\"dom-if\" if=\"[[!card.body]]\"><paper-textarea label=\"Question\" value=\"{{card.title}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template><template is=\"dom-if\" if=\"[[card.title]]\"><template is=\"dom-if\" if=\"[[card.body]]\"><p>{{card.title}}<\/p><\/template><paper-textarea label=\"Answer\" value=\"{{card.body}}\" char-counter maxlength=\"100\"><\/paper-textarea><\/template>', output: "<h1>{{title}}</h1><p>{{body}}</p>"}
         } else {
           this.$.editDialogDeck.open()
           this.editing = {title:"",body:"", userName:this.user.displayName, userPic: this.userPic}
