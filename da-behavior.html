@@ -42,6 +42,7 @@
       var changeCommits
       switch (event.detail) {
         case 'save':
+          console.log(this.editing["$key"])
           changeCommits = this.save()
           break
         case 'delete':
@@ -59,6 +60,15 @@
     },
     save: function() {
       if (this.decksPath) {
+        if (this.editing["$key"]) {
+          return this.$.document.save(this.decksPath, this.editing["$key"]).then(() => {
+            this.$.document.reset()
+          })
+        } else {
+          return this.$.document.save(this.decksPath).then(() => {
+            this.$.document.reset()
+          })
+        }
         return this.$.document.save(this.decksPath).then(() => {
           this.$.document.reset()
         })
