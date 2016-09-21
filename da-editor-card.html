@@ -63,7 +63,7 @@
         }
       },
       getUpdateValues: function(card) {
-        if (card.value) {
+        if (card) {
           this.async(this.getUpdateValues, 100) // let it load
         } else {
           var inputForm = this.$$("#cardInputs")
