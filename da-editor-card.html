@@ -39,11 +39,17 @@
           notify: true
         }
       },
+      ready: function() {
+        var inputForm = this.$$("#cardInputs")
+        var items = inputForm.querySelectorAll("[label]")
+        for (var i=0, max=items.length; i < max; i++) {
+          items[i].value = this.card[items[i].label]
+        }
+      },
       save: function() {
         var inputForm = this.$$("#cardInputs")
         var items = inputForm.querySelectorAll("[label]")
         for (var i=0, max=items.length; i < max; i++) {
-          console.log(items[i])
           this.card[items[i].label] = items[i].value
         }
         
