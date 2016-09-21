@@ -25,7 +25,7 @@
       <paper-button name="shopping" raised><iron-icon icon="shopping-cart">  </iron-icon></paper-button>
       <paper-button name="booking" raised> <iron-icon icon="assignment">     </iron-icon></paper-button>
     </paper-button-group>
-    <div id="cardInputs" inner-h-t-m-l$="{{card.input}}"></div>
+    <div id="cardInputs" inner-h-t-m-l$="[[card.input]]"></div>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
       <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Done</paper-button>
