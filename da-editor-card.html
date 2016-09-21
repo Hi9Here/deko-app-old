@@ -23,7 +23,7 @@
 <dom-module id="da-editor-card">
   <template>
     <paper-button-group selected="{{useTemplate}}">
-      <paper-button name="qa" raised><iron-icon icon="question-answer"></iron-icon></paper-button>
+      <paper-button name="qa" raised>       <iron-icon icon="question-answer"></iron-icon></paper-button>
       <paper-button name="bookmark" raised> <iron-icon icon="bookmark">       </iron-icon></paper-button>
       <paper-button name="event" raised>    <iron-icon icon="event">          </iron-icon></paper-button>
       <paper-button name="shopping" raised> <iron-icon icon="shopping-cart">  </iron-icon></paper-button>
@@ -48,7 +48,13 @@
         },
         useTemplate: {
           value:"qa"
+        },
+        theTemplate: {
+          computed: "setTemplate(useTemplate)"
         }
+      },
+      setTemplate: function(useTemplate) {
+        
       },
       getUpdateValues: function(card) {
         if (card) {
