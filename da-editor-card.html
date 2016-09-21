@@ -56,12 +56,12 @@
       setTemplate: function(useTemplate) {
         switch(useTemplate) {
           case "qa":
-            card.input  = "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>"  
-            card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar>"  
+            this.card.input  = "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>"  
+            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar>"  
             break
           case "bookmark":
-            card.input  = "<paper-textarea label=\"Title\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Url\" char-counter maxlength=\"100\"><\/paper-textarea>"  
-            card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar>"  
+            this.card.input  = "<paper-textarea label=\"Title\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Url\" char-counter maxlength=\"100\"><\/paper-textarea>"  
+            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar>"  
             break
         }
       },
