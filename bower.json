@@ -33,6 +33,8 @@
     "paper-toolbar": "PolymerElements/paper-toolbar#~1.1.6",
     "app-route": "PolymerElements/app-route#23b8a9aec4",
     "paper-material": "PolymerElements/paper-material#~1.0.6",
-    "paper-button-group": "Protoss78/paper-button-group#~0.0.1"
+    "paper-button-group": "Protoss78/paper-button-group#~0.0.1",
+    "paper-dialog": "PolymerElements/paper-dialog#7f31fa918f",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#~1.1.5"
   }
 }
