@@ -4,6 +4,8 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-input/paper-textarea.html">
 <link rel="import" href="../paper-button-group/paper-button-group.html">
+<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+
 <style>
   #cardInputs {
     margin: 15px
@@ -18,14 +20,16 @@
 </style>
 <dom-module id="da-editor-card">
   <template>
-    <paper-button-group selected="{{useTemplate}}">
-      <paper-button name="qa" raised>      <iron-icon icon="question-answer"></iron-icon></paper-button>
-      <paper-button name="bookmark" raised><iron-icon icon="bookmark">       </iron-icon></paper-button>
-      <paper-button name="event" raised>   <iron-icon icon="event">          </iron-icon></paper-button>
-      <paper-button name="shopping" raised><iron-icon icon="shopping-cart">  </iron-icon></paper-button>
-      <paper-button name="booking" raised> <iron-icon icon="assignment">     </iron-icon></paper-button>
-    </paper-button-group>
-    <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+    <paper-dialog-scrollable>
+      <paper-button-group selected="{{useTemplate}}">
+        <paper-button name="qa" raised>      <iron-icon icon="question-answer"></iron-icon></paper-button>
+        <paper-button name="bookmark" raised><iron-icon icon="bookmark">       </iron-icon></paper-button>
+        <paper-button name="event" raised>   <iron-icon icon="event">          </iron-icon></paper-button>
+        <paper-button name="shopping" raised><iron-icon icon="shopping-cart">  </iron-icon></paper-button>
+        <paper-button name="booking" raised> <iron-icon icon="assignment">     </iron-icon></paper-button>
+      </paper-button-group>
+      <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
+    </paper-dialog-scrollable>
     <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
       <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Done</paper-button>
