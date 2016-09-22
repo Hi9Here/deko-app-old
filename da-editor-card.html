@@ -70,7 +70,7 @@
             return this.card.input  = "<paper-input label=\"Event\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
           case "shopping":
             this.card.output = "<paper-toolbar class=\"medium\">  \r\n  <iron-icon icon=\"shopping-cart\"><\/iron-icon>\r\n  <div title><\/div>   \r\n  <img src=\"{{userPic}}\" \/>\r\n<\/paper-toolbar>\r\n<iron-image src=\"{{ImageUrl}}\" preload sizing=\"contain\"><\/iron-image>     \r\n<h1>{{Title}}<\/h1>\r\n<h2>{{Subtitle}}<\/h2>\r\n<h3>{{Cost}}<\/h3>\r\n<h4>{{Company}}<\/h4>"
-            return this.card.input  = "<paper-input label=\"Item\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
+            return this.card.input  = "<paper-input label=\"Link\"><\/paper-input>\r\n<paper-input label=\"ImageUrl\"><\/paper-input>\r\n<paper-input label=\"Title\"><\/paper-input>\r\n<paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>"  
           case "booking":
             this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>"
             return this.card.input  = "<paper-input label=\"Hotel\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
