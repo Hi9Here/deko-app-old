@@ -5,6 +5,7 @@
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-image/iron-image.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-icons/image-icons.html">
 <link rel="import" href="../iron-icons/social-icons.html">
@@ -15,24 +16,21 @@
       paper-material {
         background-color: #fafafa;
         color: #212121;
-        @apply(--paper-font-common-base);
-        @apply(--shadow-elevation-2dp);
-        border-radius: 5px;
-        width: 250px;
         height: 350px;
+        width: 250px;
+        text-align: center;
         display: inline-block;
-        margin-top: 15px;
         margin: 5px;
+        overflow: overlay;
         cursor: pointer; 
         cursor: hand;
-        overflow: hidden;
       }
       .hidden {
         display: none;
       }
       .placeholder:after {
         content: 'Tap to Edit';
-        opacity: 0.5;d
+        opacity: 0.5;
       }
       .hidden {
         display: none;
@@ -52,30 +50,13 @@
         text-align: left;
       }
       paper-toolbar {
-        width: 100%;
+        height: 50px;
       }
       #bottomToolbar {
         position: absolute;
         bottomL 0;
       }
       #bottomToolbar {
-        text-align: center;
-      }
-      #topContent {
-        height: 60px;
-        padding: 10px;
-        text-align: center;
-      }
-      #bottomContent {
-        height: 120px;
-        padding: 10px;
-        text-align: center;
-      }
-      #bottomContent iron-icon {
-        height: 120px;
-        width: 120px;
-      }
-      #bottomToolbar .title {
         text-align: center;
       }
       .placeholder {
@@ -102,6 +83,16 @@
       }
       iron-icon {
         margin: 5px;
+      }
+      h1.qstyle {
+        height: 105px;
+        margin-top: 10px;
+      }
+      h2.astyle {
+        height: 160px;
+      }
+       hr {
+        width: 80%;
       }
       
 
@@ -153,27 +144,25 @@
 
     </style>
     
-    <paper-material elevation="2">
-      <paper-toolbar>      
-        <iron-icon icon="question-answer"></iron-icon>
-        <template is="dom-if" if="{{card.body}}">       
-          <iron-icon icon="check" class="answered"></iron-icon>
-        </template>
-        <span class="title" title></span>
-        <img style="border-radius:45px" src="[[card.userPic]]" title="[[card.userName]]" />
-      </paper-toolbar>
-      <div id="topContent">
-        <h1>[[card.title]]</h1>
-        <h2>[[card.body]]</h2>
-      </div>
-      
-
+    <paper-material elevation="2" inner-h-t-m-l="[[getHtml(card)]]">
     </paper-material>
     
   </template>
   <script>
     Polymer({
-      is: 'da-card'
+      is: 'da-card',
+      getHtml: function(card) {
+        var output = card.output + ""
+
+        for (var attr in card) {
+          if (attr !== "_data") {
+            //replace {{}}
+            re = new RegExp("{{"+attr+"}}", "gim")
+            output = output.replace(re, card[attr])
+          }
+        }
+        return output
+      }
     })
   </script>
 </dom-module>
