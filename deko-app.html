@@ -42,7 +42,7 @@
             <div class="title">Deko</div>
           </template>
           <template is="dom-if" if="[[routeData.deck]]" restamp>
-            <div class="title">[[theDeck.title]] <small> [[theDeck.body]]</small></div>
+            <div class="title">[[theDeck.title]] <small>[[theDeck.body]]</small></div>
             <a href=\ ><paper-fab mini elevation="1" icon="content-copy"></paper-fab ></a> [[theDeck.title]]
           </template>
         </paper-toolbar>
@@ -106,10 +106,10 @@
         computed: "getIsEditable(online)"
       },
       decksPath: {
-        computed: "getDecksPath(theDeck,   persistedData.*)"
+        computed: "getDecksPath(theDeck, persistedData.*)"
       }, 
       cards:{
-        computed: "getCards(theDeck.*,    persistedData,persistedData.*)"
+        computed: "getCards(theDeck.*, persistedData,persistedData.*)"
       }
     },
     close: function(event) {
@@ -131,7 +131,6 @@
         })
       }
       this.$.editDialogDeck.close()
-      this.$.editDialogCard.close()
     },
     tappedCard: function(e,d){
       if (this.editMode) {
