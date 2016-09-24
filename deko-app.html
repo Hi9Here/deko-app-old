@@ -71,9 +71,7 @@
         <paper-dialog id="editDialogDeck" modal>
           <da-editor-deck id="editor" deck="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-deck>
         </paper-dialog>
-        <paper-dialog id="editDialogCard" modal>
-          <da-editor-card id="editor" card="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
-        </paper-dialog>
+        <da-editor-card id="editor" card="{{editing}}" uid="{{user.uid}}" on-close="close"></da-editor-card>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:deck" data="{{routeData}}"></app-route>
         <firebase-document id="document" app-name="decks" path="[[savePath]]" data="{{editing}}"></firebase-document> 
