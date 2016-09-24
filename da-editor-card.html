@@ -20,7 +20,7 @@
 </style>
 <dom-module id="da-editor-card">
   <template>
-    <paper-dialog-scrollable>
+    <div>
       <paper-button-group selected="{{useTemplate}}">
         <paper-button name="qa" raised>      <iron-icon icon="question-answer"></iron-icon></paper-button>
         <paper-button name="bookmark" raised><iron-icon icon="bookmark">       </iron-icon></paper-button>
@@ -29,8 +29,8 @@
         <paper-button name="booking" raised> <iron-icon icon="assignment">     </iron-icon></paper-button>
       </paper-button-group>
       <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
-    </paper-dialog-scrollable>
-    <div class="buttons" style="position:absolute; bottom: 20px; right: 20px;">
+    </div>
+    <div class="buttons">
       <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
       <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Done</paper-button>
     </div>
