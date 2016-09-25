@@ -116,6 +116,7 @@
           this.__editedCardElement = null
         }
         this.fire('close', detail, { bubbles: false })
+        this.$.dialog.close()
       },
       open: function(){
         this.$.dialog.open()
