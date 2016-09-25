@@ -30,22 +30,6 @@
         cursor: hand;
         overflow: hidden;
       }
-      .hidden {
-        display: none;
-      }
-      .placeholder:after {
-        content: 'Tap to Edit';
-        opacity: 0.5;
-      }
-      .hidden {
-        display: none;
-      }
-      .empty {
-        font-style: italic;
-        color: #737373;
-        line-height: 0;
-        pointer-events: none;
-      }
       #title {
         font-size: 20px;
         margin: 5px;
@@ -59,7 +43,7 @@
       }
       #bottomToolbar {
         position: absolute;
-        bottomL 0;
+        bottom: 0;
       }
       #bottomToolbar {
         text-align: center;
@@ -114,9 +98,9 @@
         and (max-device-width: 568px)
         and (-webkit-min-device-pixel-ratio: 2)
         and (orientation: portrait) {
-          paper-material {
-            width: 280px;
-            height: 400px;
+        paper-material {
+          width: 280px;
+          height: 400px;
         }
       }
       /* iPhone 6 Portrait */
@@ -125,9 +109,9 @@
         and (max-device-width: 667px) 
         and (-webkit-min-device-pixel-ratio: 2)
         and (orientation: portrait) { 
-          paper-material {
-            width: 330px;
-            height: 460px;
+        paper-material {
+          width: 330px;
+          height: 460px;
         }
       }
       /* iPhone 6+ Portrait */
@@ -136,9 +120,9 @@
         and (max-device-width: 736px) 
         and (-webkit-min-device-pixel-ratio: 3)
         and (orientation: portrait) { 
-           paper-material {
-            width: 370px;
-            height: 500px;
+        paper-material {
+          width: 370px;
+          height: 500px;
         }
       }
       /* S5 Portrait */
@@ -147,13 +131,11 @@
         and (device-height: 640px) 
         and (-webkit-device-pixel-ratio: 3) 
         and (orientation: portrait) {
-          paper-material {
-            width: 320px;
-            height: 420px;
+        paper-material {
+          width: 320px;
+          height: 420px;
         }
       }
-
-
     </style>
     
     <paper-material elevation="2" inner-h-t-m-l="[[getHtml(card)]]">
