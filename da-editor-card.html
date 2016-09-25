@@ -101,8 +101,10 @@
           }, "")
           
         }
-        this.card.output = theTemplates[useTemplate].output
-        return this.card.input = theTemplates[useTemplate].input
+        if (card.output) {
+          this.card.output = theTemplates[useTemplate].output
+          return this.card.input = theTemplates[useTemplate].input
+        }
       },
       getUpdateValues: function(card) {
         if (card) {
