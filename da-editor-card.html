@@ -91,18 +91,18 @@
         return form
       },
       setTemplate: function(useTemplate, theTemplates, card) {
-        if (useTemplate) {
-          this.card.output = theTemplates[useTemplate].output
-          return this.card.input = theTemplates[useTemplate].input
-        } else {
-          this.useTemplate = this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
+        if (!useTemplate) {
+          this.useTemplate = useTemplate =  this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
             if (currentValue.output == card.output) {
               return currentValue["$key"]
             } else {
               return previousValue
             }
           }, "")
+          
         }
+        this.card.output = theTemplates[useTemplate].output
+        return this.card.input = theTemplates[useTemplate].input
       },
       getUpdateValues: function(card) {
         if (card) {
