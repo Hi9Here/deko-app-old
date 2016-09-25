@@ -23,11 +23,10 @@
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <paper-button-group selected="{{useTemplate}}">
-          <paper-button name="qa" raised>      <iron-icon icon="question-answer"></iron-icon></paper-button>
-          <paper-button name="bookmark" raised><iron-icon icon="bookmark">       </iron-icon></paper-button>
-          <paper-button name="event" raised>   <iron-icon icon="event">          </iron-icon></paper-button>
-          <paper-button name="shopping" raised><iron-icon icon="shopping-cart">  </iron-icon></paper-button>
-          <paper-button name="booking" raised> <iron-icon icon="assignment">     </iron-icon></paper-button>
+          objectToArray
+          <template is="dom-repeat" items="{{objectToArray(theTemplates)}}">
+            <paper-button name="{{item.$key}}" raised><iron-icon icon="{{item.icon}}"></iron-icon></paper-button>
+          </template>
         </paper-button-group>
         <div id="cardInputs" inner-h-t-m-l="[[inputFrom]]"></div>
       </paper-dialog-scrollable>
@@ -55,7 +54,7 @@
         useTemplate: {
           value:""
         },
-        templates: {
+        theTemplates: {
           value:{
             qa:{
               output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>",
@@ -97,8 +96,13 @@
           this.card.input = templates[useTemplate].input
           this.card.output = templates[useTemplate].output
         } else {
-          
-          useTemplate = 
+          useTemplate = this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
+            if (currentValue.output == card.output) {
+              reurn currentValue.$key
+            } else {
+              reurn previousValue
+            }
+          }, "qa")
         }
       },
       getUpdateValues: function(card) {
@@ -137,9 +141,22 @@
         this.fire('close', detail, { bubbles: false })
         this.$.dialog.close()
       },
-      open: function(){
+      open: function() {
         this.$.dialog.open()
+      },
+      objectToArray: function(data) { //rewrite as .map
+      var output = []
+      if (data) {
+        var keys = Object.keys(data)
+        for (var i = 0; i < keys.length; i++) {
+          if (typeof data[keys[i]] === 'object') {
+            data[keys[i]]["$key"] = keys[i]
+            output.push(data[keys[i]])
+          }
+        }
       }
+      return output
+    }
     })
   </script>
 </dom-module>
