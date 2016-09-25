@@ -50,6 +50,9 @@
         updateValues: {
           computed: ("getUpdateValues(card.*)")
         },
+        usedtemplate: {
+          computed: "getUsedtemplate(theTemplates, card)"
+        }.
         useTemplate: {
           value:""
         },
@@ -83,27 +86,28 @@
           }
         },
         theTemplate: {
-          computed: "setTemplate(useTemplate, theTemplates, card)"
+          computed: "setTemplate(useTemplate, usedTemplate, theTemplates, card)"
         }
       },
       getInputFrom: function(form) {
         this.async(this.getUpdateValues, 100) // let it load
         return form
       },
-      setTemplate: function(useTemplate, theTemplates, card) {
-        if (!useTemplate) {
-          this.useTemplate = useTemplate =  this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
+      getUsedtemplate: function(theTemplates, card) {
+         return this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
             if (currentValue.output == card.output) {
               return currentValue["$key"]
             } else {
               return previousValue
             }
           }, "")
-          
-        }
-        if (card.output) {
+      },
+      setTemplate: function(useTemplate, usedTemplate, theTemplates, card) {
+        if (useTemplate) {
           this.card.output = theTemplates[useTemplate].output
           return this.card.input = theTemplates[useTemplate].input
+        } else if (card.output) {
+          return this.card.input
         }
       },
       getUpdateValues: function(card) {
