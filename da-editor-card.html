@@ -90,10 +90,10 @@
         this.async(this.getUpdateValues, 100) // let it load
         return form
       },
-      setTemplate: function(useTemplate, templates, card) {
+      setTemplate: function(useTemplate, theTemplates, card) {
         if (useTemplate) {
-          this.card.output = templates[useTemplate].output
-          return this.card.input = templates[useTemplate].input
+          this.card.output = theTemplates[useTemplate].output
+          return this.card.input = theTemplates[useTemplate].input
         } else {
           this.useTemplate = this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
             if (currentValue.output == card.output) {
