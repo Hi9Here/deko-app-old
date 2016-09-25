@@ -98,7 +98,7 @@
         } else {
           useTemplate = this.objectToArray(theTemplates).reduce(function(previousValue, currentValue, currentIndex, array){
             if (currentValue.output == card.output) {
-              reurn currentValue.$key
+              reurn currentValue["$key"]
             } else {
               reurn previousValue
             }
