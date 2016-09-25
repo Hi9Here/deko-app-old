@@ -53,33 +53,52 @@
           computed: ("getUpdateValues(card.*)")
         },
         useTemplate: {
-          value:"qa"
+          value:""
+        },
+        templates: {
+          value:{
+            qa:{
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>",
+              input: "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>",
+              icon: "question-answer",
+            },
+            bookmark: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
+              input: "<paper-input label=\"Title\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>", 
+              icon: "bookmark",
+            },
+            event: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Event}}<\/a>",
+              input: "<paper-input label=\"Event\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
+              icon: "event",
+            },
+            shopping: {
+              output: "<paper-toolbar class=\"medium\">  \r\n  <iron-icon icon=\"shopping-cart\"><\/iron-icon>\r\n  <div title><\/div>   \r\n  <img src=\"{{userPic}}\" \/>\r\n<\/paper-toolbar>\r\n<iron-image src=\"{{ImageUrl}}\" preload sizing=\"contain\"><\/iron-image>     \r\n<h1>{{Title}}<\/h1>\r\n<h2>{{Subtitle}}<\/h2>\r\n<h3>{{Cost}}<\/h3>\r\n<h4>{{Company}}<\/h4>",
+              input: "<paper-input label=\"Link\"><\/paper-input>\r\n<paper-input label=\"ImageUrl\"><\/paper-input>\r\n<paper-input label=\"Title\"><\/paper-input>\r\n<paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>",
+              icon: "shopping-cart",
+            },
+            booking: {
+              output: "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>",
+              input: "<paper-input label=\"Hotel\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>",
+              icon: "assignment",
+            }
+          }
         },
         theTemplate: {
-          computed: "setTemplate(useTemplate)"
+          computed: "setTemplate(useTemplate, templates, card)"
         }
       },
       getInputFrom: function(form) {
         this.async(this.getUpdateValues, 100) // let it load
         return form
       },
-      setTemplate: function(useTemplate) {
-        switch(useTemplate) {
-          case "qa":
-            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>"
-            return this.card.input  = "<paper-textarea label=\"Question\" char-counter maxlength=\"100\"><\/paper-textarea>\r\n<paper-textarea label=\"Answer\" char-counter maxlength=\"100\"><\/paper-textarea>"  
-          case "bookmark":
-            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>"
-            return this.card.input  = "<paper-input label=\"Title\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
-          case "event":
-            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Event}}<\/a>"
-            return this.card.input  = "<paper-input label=\"Event\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
-          case "shopping":
-            this.card.output = "<paper-toolbar class=\"medium\">  \r\n  <iron-icon icon=\"shopping-cart\"><\/iron-icon>\r\n  <div title><\/div>   \r\n  <img src=\"{{userPic}}\" \/>\r\n<\/paper-toolbar>\r\n<iron-image src=\"{{ImageUrl}}\" preload sizing=\"contain\"><\/iron-image>     \r\n<h1>{{Title}}<\/h1>\r\n<h2>{{Subtitle}}<\/h2>\r\n<h3>{{Cost}}<\/h3>\r\n<h4>{{Company}}<\/h4>"
-            return this.card.input  = "<paper-input label=\"Link\"><\/paper-input>\r\n<paper-input label=\"ImageUrl\"><\/paper-input>\r\n<paper-input label=\"Title\"><\/paper-input>\r\n<paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>"  
-          case "booking":
-            this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><a title=\"{{Title}}\" href=\"{{Url}}\">{{Title}}<\/a>"
-            return this.card.input  = "<paper-input label=\"Hotel\" char-counter maxlength=\"100\"><\/paper-input>\r\n<paper-input label=\"Url\" char-counter maxlength=\"100\"><\/paper-input>"  
+      setTemplate: function(useTemplate, templates, card) {
+        if (useTemplate) {
+          this.card.input = templates[useTemplate].input
+          this.card.output = templates[useTemplate].output
+        } else {
+          
+          useTemplate = 
         }
       },
       getUpdateValues: function(card) {
