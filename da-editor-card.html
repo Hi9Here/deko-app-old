@@ -107,6 +107,9 @@
           this.card.output = theTemplates[useTemplate].output
           return this.card.input = theTemplates[useTemplate].input
         } else if (card.output) {
+          if (usedTemplate) {
+            this.useTemplate = usedTemplate
+          }
           return this.card.input
         }
       },
