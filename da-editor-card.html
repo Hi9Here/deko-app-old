@@ -33,7 +33,7 @@
       <div class="buttons">
         <paper-button on-tap="delete" style="color: #333;">Delete</paper-button>
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button on-tap="save" raised style="background: #ff4081; color: #fff;">Save</paper-button>
+        <paper-button on-tap="save"  raised style="background: #ff4081; color: #fff;">Save</paper-button>
       </div>
     </paper-dialog>
   </template>
@@ -77,7 +77,7 @@
             },
             shopping: {
               output: "<paper-toolbar class=\"medium\"><iron-icon icon=\"shopping-cart\"><\/iron-icon><div class=\"title\"><\/div><img src=\"{{userPic}}\" \/><\/paper-toolbar><h1>{{Title}}<\/h1><h2>{{Subtitle}}<\/h2><h3>{{Cost}}<\/h3><h4>{{Company}}<\/h4>",
-              input: "<paper-input label=\"Link\"><\/paper-input>\r\n<paper-input label=\"ImageUrl\"><\/paper-input>\r\n<paper-input label=\"Title\"><\/paper-input>\r\n<paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>",
+              input: "<paper-input label=\"Link\"><\/paper-input>\r\n<input-image label=\"ImageUrl\"><\/input-image><paper-input label=\"Title\"><\/paper-input><paper-input label=\"Subtitle\"><\/paper-input>\r\n<paper-input label=\"Cost\" type=\"number\" ><div perfix>\u00A3<\/div><\/paper-input>\r\n<paper-input label=\"Company\"><\/paper-input>",
               icon: "shopping-cart",
             },
             booking: {
