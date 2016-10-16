@@ -58,6 +58,7 @@
         return form
       },
       setTemplate: function(useTemplate) {
+        this.async(this.fit, 100)
         switch(useTemplate) {
           case "qa":
             this.card.output = "<paper-toolbar><span class=\"title\" title><\/span><img style=\"border-radius:45px\" src=\"{{userPic}}\" title=\"{{userName}}\" \/><\/paper-toolbar><h1>{{Question}}<\/h1><br \/><h1>{{Answer}}<\/h1>"
@@ -110,7 +111,10 @@
           this.__editedCardElement = null
         }
         this.fire('close', detail, { bubbles: false })
-      }
+      },
+      fit: function() {
+        this.fire('fit')
+      },
     })
   </script>
 </dom-module>
