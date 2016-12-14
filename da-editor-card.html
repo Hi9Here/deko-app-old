@@ -7,22 +7,20 @@
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../input-image/input-image.html">
 <link rel="import" href="../paper-styles/color.html">
-
-<style>
-  #cardInputs {
-    margin: 15px
-  }
-  .templateButtons {
-    text-align: center;
-    margin-top: 40px;
-  }
-  paper-button-group {
-    margin: 15px
-  }
-</style>
-
 <dom-module id="da-editor-card">
   <template>
+    <style>
+      #cardInputs {
+        margin: 15px
+      }
+      .templateButtons {
+        text-align: center;
+        margin-top: 40px;
+      }
+      paper-button-group {
+        margin: 15px
+      }
+    </style>
     <paper-dialog id="dialog" modal>
       <paper-dialog-scrollable>
         <paper-button-group selected="{{useTemplate}}">
